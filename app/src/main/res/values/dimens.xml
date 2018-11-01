@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_bar_height">240dp</dimen>
+    <dimen name="app_icon_height">152dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="md_keylines">4dp</dimen>
+    <dimen name="md_keylines_x2">8dp</dimen>
+    <dimen name="md_keylines_x3">12dp</dimen>
+    <dimen name="md_keylines_x4">16dp</dimen>
+    <dimen name="md_keylines_x5">20dp</dimen>
+    <dimen name="md_keylines_x6">24dp</dimen>
+    <dimen name="md_keylines_x7">28dp</dimen>
+    <dimen name="md_keylines_x8">32dp</dimen>
+    <dimen name="md_keylines_x9">36dp</dimen>
+    <dimen name="md_keylines_x10">40dp</dimen>
+    <dimen name="md_keylines_x11">44dp</dimen>
+    <dimen name="md_keylines_x12">48dp</dimen>
+
+    <dimen name="article_padding">52dp</dimen>
+    <dimen name="article_margin">36dp</dimen>
+    <dimen name="article_title">20sp</dimen>
+    <dimen name="article_heading">18sp</dimen>
+    <dimen name="article_subheading">16sp</dimen>
+
+    <dimen name="tile_height">160dp</dimen>
+    <dimen name="tile_image_height">136dp</dimen>
+    <dimen name="tile_text_height">24dp</dimen>
+
+    <dimen name="card_height">220dp</dimen>
+    <dimen name="card_image_height">160dp</dimen>
+    <dimen name="card_title_height">32dp</dimen>
+
+    <dimen name="avatar_view">60dp</dimen>
+    <dimen name="avatar_size">40dp</dimen>
+    <dimen name="avatar_height">72dp</dimen>
+    <dimen name="list_body">14sp</dimen>
+
+    <dimen name="image_margin">100dp</dimen>
+    <dimen name="statistics_width">200dp</dimen>
+
+    <dimen name="play_height">160dp</dimen>
+    <dimen name="game_height">370dp</dimen>
+    <dimen name="play_fab">188dp</dimen>
+    <dimen name="play_image">152dp</dimen>
+    <dimen name="play_dropdown">100dp</dimen>
+    <dimen name="play_bottom">64dp</dimen>
+    <dimen name="play_number">50sp</dimen>
+    <dimen name="play_complete">30sp</dimen>
+    <dimen name="play_question">25sp</dimen>
+    <dimen name="play_option">20sp</dimen>
+</resources>

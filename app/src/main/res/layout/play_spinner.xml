@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fillViewport="true">
+
+    <TextView
+        android:id="@+id/question1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/play_height"
+        android:gravity="center"
+        android:textSize="@dimen/play_question"
+        android:textColor="@android:color/white"
+        android:background="@color/colorEnglish"
+        android:padding="@dimen/md_keylines_x3"
+        tools:text="Hola, ¿como estas?"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/md_keylines_x12"
+        android:layout_marginStart="@dimen/md_keylines_x6"
+        android:layout_marginEnd="@dimen/md_keylines_x6"
+        android:layout_marginBottom="@dimen/md_keylines_x6"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/question2"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/md_keylines_x12"
+            android:textSize="@dimen/play_option"
+            android:textColor="@android:color/black"
+            tools:text="Hello, how "/>
+
+        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            android:id="@+id/answer"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/md_keylines_x11"
+            android:layout_toEndOf="@id/question2"
+            android:textSize="@dimen/play_option"
+            android:textColor="@android:color/black"
+            android:dropDownWidth="@dimen/play_dropdown"
+            android:focusableInTouchMode="false"
+            android:popupBackground="@color/colorEnglish"
+            app:met_underlineColor="@color/colorEnglish"
+            android:text="   "/>
+
+        <TextView
+            android:id="@+id/question3"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/md_keylines_x12"
+            android:layout_toEndOf="@id/answer"
+            android:textSize="@dimen/play_option"
+            android:textColor="@android:color/black"
+            tools:text=" you?"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

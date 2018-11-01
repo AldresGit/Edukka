@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Edukka</string>
+    <string name="app_user">Javier Rosales Bañón</string>
+
+    <string name="username">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Entrar</string>
+    <string name="register">Nuevo Usuario</string>
+
+    <string name="student">Estudiante</string>
+    <string name="teacher">Profesor</string>
+    <string name="fullname">Nombre y Apellidos</string>
+    <string name="classid">ID Clase (opcional)</string>
+    <string name="signup">Registrar</string>
+
+    <string name="nodata">No Datos Disponibles</string>
+    <string name="myprofile">Mi Perfil</string>
+    <string name="myclass">Mi Clase</string>
+    <string name="help">Ayuda</string>
+    <string name="logout">Salir</string>
+
+    <string name="search">Buscar</string>
+    <string name="history">Historial</string>
+    <string name="statistics">Estadísticas</string>
+
+    <string name="classname">Nombre de la Clase</string>
+    <string name="identifier">Identificador</string>
+    <string name="information">Información</string>
+    <string name="size">Tamaño</string>
+
+    <string name="gametitle">Título del Juego</string>
+    <string name="description">Descripción</string>
+    <string name="difficulty">Dificultad</string>
+    <string name="vote">Votos</string>
+
+    <string name="score">Puntuación</string>
+    <string name="role">Rol</string>
+    <string name="avatar">Avatar</string>
+    <string name="newpassword">Nueva Contraseña</string>
+    <string name="confirm_password">Confirmar Contraseña</string>
+    <string name="confirm_newpassword">Confirmar Nueva Contraseña</string>
+    <string name="password_error">Las contraseñas no son iguales</string>
+
+    <string name="editprofile">Editar Perfil</string>
+    <string name="editclass">Editar Clase</string>
+    <string name="editgame">Editar Juego</string>
+    <string name="newclass">Nueva Clase</string>
+    <string name="save">Guardar</string>
+    <string name="create">Crear</string>
+
+    <string name="delete">Borrar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="ok">Vale</string>
+
+    <string name="deleteuser">Borrar Usuario</string>
+    <string name="deleteclass">Borrar Clase</string>
+    <string name="deletegame">Borrar Juego</string>
+
+    <string name="dialoguser">Esta acción borrará tu usuario de la base de datos, ¿estás seguro?</string>
+    <string name="dialogclass">Esta acción borrará tu clase de la base de datos, ¿estás seguro?</string>
+    <string name="dialoggame">Esta acción borrará tu juego de la base de datos, ¿estás seguro?</string>
+
+    <string name="completed">Juegos Completados</string>
+    <string name="approved">Juegos Aprobados</string>
+    <string name="average">Puntuación Media</string>
+    <string name="failure">Porcentaje de Fallos</string>
+    <string name="best">Asignatura Más Jugada</string>
+    <string name="worst">Asignatura Menos Jugada</string>
+
+    <string name="empty">Campo Obligatorio</string>
+    <string name="minimum">Al menos 4 caracteres</string>
+    <string name="invalid">Usuario/Contraseña inválido</string>
+    <string name="login_success">Inicio de sesión correcto</string>
+    <string name="signup_success">Registro de usuario correcto</string>
+    <string name="data_update">Datos actualizados</string>
+    <string name="class_fail">Clase no encontrada</string>
+    <string name="username_fail">Usuario no disponible</string>
+
+    <string name="deleteclass_success">Clase eliminada con éxito</string>
+    <string name="deleteuser_success">Usuario eliminado con éxito</string>
+    <string name="deletegame_success">Juego eliminado con éxito</string>
+
+    <string name="user_score">%1$s puntos</string>
+    <string name="class_size">%1$d usuarios</string>
+
+    <string name="enter_class">Entrar Clase</string>
+    <string name="leave_class">Salir Clase</string>
+    <string name="dialogenter">Introduce el identificador de la clase</string>
+    <string name="dialogleave">Vas a abandonar la clase actual, ¿estás seguro?</string>
+
+    <string name="feedback">Danos tu opinión sobre el juego, ¿te ha gustado?</string>
+    <string name="sound">Sube el volumen</string>
+    <string name="finished">Juego Terminado</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat pariatur.
+    </string>
+</resources>

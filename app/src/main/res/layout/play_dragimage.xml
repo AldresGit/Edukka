@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fillViewport="true">
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/play_height"
+        android:gravity="center"
+        android:textSize="@dimen/play_question"
+        android:textColor="@android:color/white"
+        android:background="@color/colorSocial"
+        android:padding="@dimen/md_keylines_x3"
+        tools:text="Drag and drop the text"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:id="@+id/optionsLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginTop="@dimen/md_keylines_x12"
+            android:layout_marginStart="@dimen/md_keylines_x6"
+            android:layout_marginBottom="@dimen/md_keylines_x6"
+            android:layout_marginEnd="@dimen/md_keylines_x3"
+            android:padding="@dimen/md_keylines"
+            android:background="@drawable/layout_border2"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvOptions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/answerLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/md_keylines_x12"
+            android:layout_marginStart="@dimen/md_keylines_x3"
+            android:layout_marginBottom="@dimen/md_keylines_x6"
+            android:layout_marginEnd="@dimen/md_keylines_x6"
+            android:padding="@dimen/md_keylines"
+            android:background="@drawable/layout_border2"
+            android:orientation="vertical"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fillViewport="true">
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/play_height"
+        android:gravity="center"
+        android:textSize="@dimen/play_question"
+        android:textColor="@android:color/white"
+        android:background="@color/colorMaths"
+        android:padding="@dimen/md_keylines_x3"
+        tools:text="20 + 30"/>
+
+    <TextView
+        android:id="@+id/answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/md_keylines_x12"
+        android:textSize="@dimen/play_number"
+        android:textColor="@color/colorMaths"
+        tools:text="50"/>
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/play_bottom"
+        android:layout_marginStart="@dimen/md_keylines_x6"
+        android:layout_marginEnd="@dimen/md_keylines_x6"
+        android:thumbTint="@color/colorMaths"
+        android:progressBackgroundTint="@android:color/black"
+        tools:progress="50"/>
+
+</LinearLayout>

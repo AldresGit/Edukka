@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fillViewport="true">
+
+    <ImageView
+        android:id="@+id/btnPlay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/play_height"
+        android:background="@color/colorMusic"
+        android:scaleType="centerInside"
+        android:padding="@dimen/md_keylines"
+        android:src="@drawable/audio"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvOptions"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/md_keylines_x10"
+        android:padding="@dimen/md_keylines_x3"/>
+
+</LinearLayout>

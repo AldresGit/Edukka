@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<de.hdodenhof.circleimageview.CircleImageView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/avatar_img"
+    android:layout_width="@dimen/avatar_view"
+    android:layout_height="@dimen/avatar_view"
+    android:padding="@dimen/md_keylines"
+    android:background="?attr/selectableItemBackground"
+    tools:src="@drawable/avatar_dog" />

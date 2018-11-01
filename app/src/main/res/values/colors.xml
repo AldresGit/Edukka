@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryLight">#C5CAE9</color>
+    <color name="colorAccent">#009688</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+    <color name="colorDivider">#BDBDBD</color>
+    <color name="colorButton">#1100</color>
+    <color name="colorStar">#FFC107</color>
+
+    <color name="colorSpanish">#607d8b</color>
+    <color name="colorMaths">#f44336</color>
+    <color name="colorNatural">#9c27b0</color>
+    <color name="colorSocial">#673ab7</color>
+    <color name="colorBioGeo">#2196f3</color>
+    <color name="colorGeoHis">#009688</color>
+    <color name="colorMusic">#4caf50</color>
+    <color name="colorSports">#ffb300</color>
+    <color name="colorEnglish">#ff5722</color>
+    <color name="colorGeneral">#795548</color>
+</resources>

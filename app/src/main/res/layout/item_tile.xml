@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="@dimen/md_keylines">
+
+    <ImageView
+        android:id="@+id/tile_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tile_height"
+        android:alpha="0.3"
+        android:background="@color/colorDivider" />
+
+    <ImageView
+        android:id="@+id/tile_picture"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tile_image_height"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/subject_spanish" />
+
+    <TextView
+        android:id="@+id/tile_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tile_text_height"
+        android:layout_alignBottom="@+id/tile_background"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="@dimen/article_subheading"
+        tools:text="Spanish Language" />
+
+</RelativeLayout>

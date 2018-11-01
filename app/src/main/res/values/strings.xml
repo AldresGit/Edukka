@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Edukka</string>
+    <string name="app_user">Javier Rosales Bañón</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Log In</string>
+    <string name="register">Register Here</string>
+
+    <string name="student">Student</string>
+    <string name="teacher">Teacher</string>
+    <string name="fullname">Full Name</string>
+    <string name="classid">Class ID (optional)</string>
+    <string name="signup">Sign Up</string>
+
+    <string name="nodata">No Data Available</string>
+    <string name="myprofile">My Profile</string>
+    <string name="myclass">My Class</string>
+    <string name="help">Help</string>
+    <string name="logout">Log Out</string>
+
+    <string name="search">Search</string>
+    <string name="history">History</string>
+    <string name="statistics">Statistics</string>
+
+    <string name="classname">Class Name</string>
+    <string name="identifier">Identifier</string>
+    <string name="information">Information</string>
+    <string name="size">Size</string>
+
+    <string name="gametitle">Game Title</string>
+    <string name="description">Description</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="vote">Vote</string>
+
+    <string name="score">Score</string>
+    <string name="role">Role</string>
+    <string name="avatar">Avatar</string>
+    <string name="newpassword">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_newpassword">Confirm New Password</string>
+    <string name="password_error">Passwords are not the same</string>
+
+    <string name="editprofile">Edit Profile</string>
+    <string name="editclass">Edit Class</string>
+    <string name="editgame">Edit Game</string>
+    <string name="newclass">New Class</string>
+    <string name="save">Save</string>
+    <string name="create">Create</string>
+
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+
+    <string name="deleteuser">Delete User</string>
+    <string name="deleteclass">Delete Class</string>
+    <string name="deletegame">Delete Game</string>
+
+    <string name="dialoguser">This action will erase your user from the database, are you sure?</string>
+    <string name="dialogclass">This action will erase your class from the database, are you sure?</string>
+    <string name="dialoggame">This action will erase your game from the database, are you sure?</string>
+
+    <string name="completed">Completed Games</string>
+    <string name="approved">Approved Games</string>
+    <string name="average">Average Score</string>
+    <string name="failure">Failure Rate</string>
+    <string name="best">Most Played Subject</string>
+    <string name="worst">Least Played Subject</string>
+
+    <string name="empty">Can\'t be Empty</string>
+    <string name="minimum">At least 4 characters</string>
+    <string name="invalid">Invalid Username/Password</string>
+    <string name="login_success">Successful Login</string>
+    <string name="signup_success">Successful Signup</string>
+    <string name="data_update">Data updated</string>
+    <string name="class_fail">Class not found</string>
+    <string name="username_fail">Username not available</string>
+
+    <string name="deleteclass_success">Class deleted successfully</string>
+    <string name="deleteuser_success">User deleted successfully</string>
+    <string name="deletegame_success">Game deleted successfully</string>
+
+    <string name="user_score">%1$s points</string>
+    <string name="class_size">%1$d users</string>
+
+    <string name="enter_class">Enter Class</string>
+    <string name="leave_class">Leave Class</string>
+    <string name="dialogenter">Insert the class identifier</string>
+    <string name="dialogleave">You are going to exit the current class, are you sure?</string>
+
+    <string name="feedback">Give us your feedback about the game, did you like it?</string>
+    <string name="sound">Turn the volume up</string>
+    <string name="finished">Finished Game</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat pariatur.
+    </string>
+</resources>
