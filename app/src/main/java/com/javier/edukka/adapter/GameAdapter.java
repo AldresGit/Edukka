@@ -12,9 +12,11 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.javier.edukka.R;
+import com.javier.edukka.controller.UserSingleton;
 import com.javier.edukka.model.GameModel;
 import com.javier.edukka.service.HelperClient;
 import com.javier.edukka.view.GameActivity;
+import com.javier.edukka.view.GameModifyActivity;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -110,10 +112,20 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> im
                     int i = Integer.parseInt(mFilteredList.get(getAdapterPosition()).getId());
                     String s = mFilteredList.get(getAdapterPosition()).getSubject();
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, GameActivity.class);
-                    intent.putExtra(GameActivity.EXTRA_POSITION, i);
-                    intent.putExtra(GameActivity.EXTRA_SUBJECT, s);
-                    context.startActivity(intent);
+
+                    if(UserSingleton.getInstance().getUserModel().getRole().equals("teacher")) {
+                        Intent intent = new Intent(context, GameModifyActivity.class);
+                        intent.putExtra(GameActivity.EXTRA_POSITION, i);
+                        intent.putExtra(GameActivity.EXTRA_SUBJECT, s);
+                        context.startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(context, GameActivity.class);
+                        intent.putExtra(GameActivity.EXTRA_POSITION, i);
+                        intent.putExtra(GameActivity.EXTRA_SUBJECT, s);
+                        context.startActivity(intent);
+                    }
+
+
                 }
             });
         }

@@ -95,9 +95,25 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
+    <string name="time_limit">Time Limit</string>
+    <string name="questions">Questions</string>
+
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
         nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
         irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat pariatur.
     </string>
+    <string name="creating_game">Creating a game of</string>
+    <string name="time_limit_error">Time Limit can´t be less than 30</string>
+    <string name="game_created">Game successfully created</string>
+    <string name="modifying_game">Editing a game of </string>
+    <string name="modified_game">Game successfully edited</string>
+    <string name="add_question">Add a question of type</string>
+    <string name="add">Add</string>
+    <string name="time_limit_hint">60</string>
+    <string name="quiz_type">Quiz Type</string>
+    <string name="quiz_ready">Question Ready</string>
+    <string name="quiz_not_ready">Need to edit this question</string>
+    <string name="no_queestions">No questions added</string>
+
 </resources>

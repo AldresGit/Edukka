@@ -32,7 +32,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class GameEditActivity extends AppCompatActivity {
-
+/*
     public static final String EXTRA_POSITION = "position";
     private MaterialBetterSpinner spinner;
     private EditText name, desc;
@@ -197,5 +197,5 @@ public class GameEditActivity extends AppCompatActivity {
             }
         });
     }
-
+*/
 }

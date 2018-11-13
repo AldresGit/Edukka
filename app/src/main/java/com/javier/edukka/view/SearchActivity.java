@@ -1,7 +1,9 @@
 package com.javier.edukka.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +17,7 @@ import android.view.View;
 
 import com.javier.edukka.R;
 import com.javier.edukka.adapter.GameAdapter;
+import com.javier.edukka.controller.UserSingleton;
 import com.javier.edukka.model.GameModel;
 import com.javier.edukka.service.RestInterface;
 import com.javier.edukka.service.RetrofitClient;
@@ -33,6 +36,7 @@ public class SearchActivity extends AppCompatActivity {
     public static final String SUBJECT_NAME = "subject";
     private SwipeRefreshLayout mySwipeRefreshLayout;
     private ArrayList<GameModel> mArrayList;
+    private FloatingActionButton fab;
     private RecyclerView mRecyclerView;
     private GameAdapter mAdapter;
 
@@ -50,8 +54,23 @@ public class SearchActivity extends AppCompatActivity {
         mySwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
         mySwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         getSupportActionBar().setTitle(getIntent().getStringExtra(SUBJECT_NAME));
+
+        //--------------Lineas nuevas-----------------
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchActivity.this, GameCreateActivity.class);
+                intent.putExtra(SUBJECT_NAME, getIntent().getStringExtra(SUBJECT_NAME));
+                intent.putExtra("id", 0);
+                startActivity(intent);
+            }
+        });
+        //--------------Lineas nuevas-----------------
+
         loadJSON();
         refresh();
+
     }
 
     protected void onRestart() {
@@ -64,6 +83,12 @@ public class SearchActivity extends AppCompatActivity {
         if (Locale.getDefault().getLanguage().equals("es")) {
             search = HelperClient.subjectTranslateEn(search);
         }
+
+        //--------------Lineas nuevas-----------------
+        if(UserSingleton.getInstance().getUserModel().getRole().equals("teacher")) {
+            findViewById(R.id.fab).setVisibility(View.VISIBLE);
+        }
+        //--------------Lineas nuevas-----------------
 
         RestInterface restInterface = RetrofitClient.getInstance();
         Call<List<GameModel>> call = restInterface.getSubjectGames(search);
@@ -101,6 +126,8 @@ public class SearchActivity extends AppCompatActivity {
                 Log.d("Error",t.getMessage());
             }
         });
+
+
     }
 
     @Override

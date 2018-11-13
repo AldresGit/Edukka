@@ -95,9 +95,25 @@
     <string name="yes">Sí</string>
     <string name="no">No</string>
 
+    <string name="time_limit">Tiempo Limite</string>
+    <string name="questions">Preguntas</string>
+
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
         nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
         irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat pariatur.
     </string>
+    <string name="creating_game">"Creando un juego de "</string>
+    <string name="time_limit_error">El Tiempo Límite no puede ser menor a 30</string>
+    <string name="game_created">Juego creado con éxito</string>
+    <string name="modifying_game">"Editando un juego de "</string>
+    <string name="modified_game">Juego editado con éxito</string>
+    <string name="add_question">Añadir una pregunta de tipo</string>
+    <string name="add">Añadir</string>
+    <string name="time_limit_hint">60</string>
+    <string name="quiz_type">Quiz Type</string>
+    <string name="quiz_ready">Pregunta Preparada</string>
+    <string name="quiz_not_ready">Se necesita editar esta pregunta</string>
+    <string name="no_queestions">No hay preguntas añadidas</string>
+
 </resources>

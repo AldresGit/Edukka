@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_height="192dp"
+        android:layout_width="match_parent"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:toolbarId="@+id/toolbar"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:expandedTitleTextAppearance="@style/expanded_app_bar"
+            app:contentScrim="?attr/colorPrimary">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseParallaxMultiplier="1.0"></android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/md_keylines_x3"
+                android:paddingRight="@dimen/md_keylines_x3"
+                android:paddingLeft="@dimen/md_keylines_x3"
+                android:paddingEnd="@dimen/md_keylines_x3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/md_keylines_x2"
+                    android:text="@string/gametitle"
+                    android:textAlignment="center"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/gameTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="20"
+                    android:hint="@string/gametitle"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    android:textAlignment="center"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="20sp"
+                    android:paddingTop="@dimen/md_keylines_x2"/>
+
+                <EditText
+                    android:id="@+id/gameDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:height="@dimen/app_icon_height"
+
+                    android:ems="20"
+                    android:hint="@string/description"
+                    android:inputType="textMultiLine" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/difficulty"
+                    android:textColor="?attr/colorAccent"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:paddingTop="@dimen/md_keylines_x2"/>
+
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/gameDifficulty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/md_keylines_x2"
+                    android:entries="@array/level" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_limit"
+                    android:textAlignment="center"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="20sp"
+                    android:paddingTop="@dimen/md_keylines_x2" />
+
+                <EditText
+                    android:id="@+id/gameTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="60"
+                    android:inputType="number" />
+
+                <Button
+                    android:id="@+id/save_btn"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_padding_bottom"
+                    android:layout_marginRight="@dimen/default_padding_bottom"
+                    android:onClick="save"
+                    android:text="@string/save" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/questions"
+                    android:textAlignment="center"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="20sp"
+                    android:paddingTop="@dimen/md_keylines_x2" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

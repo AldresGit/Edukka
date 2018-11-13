@@ -23,10 +23,13 @@ public class QuizModel {
     @SerializedName("game_id")
     @Expose
     private String gameId;
+    @SerializedName("edited")
+    @Expose
+    private String edited;
 
     public QuizModel() {}
 
-    public QuizModel(String id, String question, String answer, String options, String type, String gameId) {
+    public QuizModel(String id, String question, String answer, String options, String type, String gameId, String edited) {
         super();
         this.id = id;
         this.question = question;
@@ -34,6 +37,7 @@ public class QuizModel {
         this.options = options;
         this.type = type;
         this.gameId = gameId;
+        this.edited = edited;
     }
 
     public String getId() {
@@ -83,5 +87,9 @@ public class QuizModel {
     public void setGameId(String gameId) {
         this.gameId = gameId;
     }
+
+    public String getEdited() { return edited; }
+
+    public void setEdited(String edited) { this.edited = edited; }
 
 }

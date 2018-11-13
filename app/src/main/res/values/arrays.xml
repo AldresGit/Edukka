@@ -59,4 +59,16 @@
         <item>@drawable/activity_history</item>
         <item>@drawable/activity_statistics</item>
     </array>
+    <array name="question_type">
+        <item>Drag Drop</item>
+        <item>Picker</item>
+        <item>Drag Name</item>
+        <item>Drag Image</item>
+        <item>Checkbox</item>
+        <item>Complete</item>
+        <item>Sound</item>
+        <item>Image</item>
+        <item>Spinner</item>
+        <item>Select</item>
+    </array>
 </resources>

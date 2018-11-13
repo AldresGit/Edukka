@@ -61,10 +61,11 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int id = getIntent().getIntExtra(EXTRA_POSITION, 0);
                 Intent intent = new Intent(GameActivity.this, GameEditActivity.class);
-                intent.putExtra(GameEditActivity.EXTRA_POSITION, id);
+                //intent.putExtra(GameEditActivity.EXTRA_POSITION, id);
                 startActivity(intent);
             }
         });
+
     }
 
     protected void onRestart() {
