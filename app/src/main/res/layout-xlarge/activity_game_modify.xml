@@ -54,7 +54,7 @@
                     android:paddingTop="@dimen/md_keylines_x2"
                     android:text="@string/gametitle"
                     android:textAlignment="center"
-                    android:textColor="?attr/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp" />
 
                 <EditText
@@ -71,15 +71,15 @@
                     android:paddingTop="@dimen/md_keylines_x2"
                     android:text="@string/description"
                     android:textAlignment="center"
-                    android:textColor="?attr/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/gameDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:height="@dimen/app_icon_height"
 
+                    android:height="@dimen/app_icon_height"
                     android:ems="20"
                     android:hint="@string/description"
                     android:inputType="textMultiLine" />
@@ -90,7 +90,7 @@
                     android:paddingTop="@dimen/md_keylines_x2"
                     android:text="@string/difficulty"
                     android:textAlignment="center"
-                    android:textColor="?attr/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp" />
 
                 <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
@@ -106,7 +106,7 @@
                     android:paddingTop="@dimen/md_keylines_x2"
                     android:text="@string/time_limit"
                     android:textAlignment="center"
-                    android:textColor="?attr/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp" />
 
                 <EditText
@@ -119,14 +119,18 @@
 
                 <Button
                     android:id="@+id/save_btn"
-                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/default_padding_bottom"
                     android:layout_marginTop="100dp"
                     android:layout_marginRight="@dimen/default_padding_bottom"
+                    android:background="@color/colorPrimary"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:backgroundTintMode="src_in"
                     android:onClick="save"
-                    android:text="@string/save" />
+                    android:text="@string/save"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/background_light" />
 
             </LinearLayout>
 
@@ -149,7 +153,7 @@
                         android:paddingTop="@dimen/md_keylines_x3"
                         android:text="@string/questions"
                         android:textAlignment="center"
-                        android:textColor="?attr/colorAccent"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="20sp" />
 
                     <ImageButton
@@ -182,7 +186,7 @@
                         android:layout_weight="1"
                         android:text="@string/add_question"
                         android:textAlignment="textEnd"
-                        android:textColor="?attr/colorAccent"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="20sp" />
 
                     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
@@ -195,10 +199,14 @@
 
                     <Button
                         android:id="@+id/add_btn"
-                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:background="@color/colorPrimaryDark"
+                        android:backgroundTintMode="src_in"
                         android:layout_weight="1"
+                        android:onClick="createQuiz"
+                        android:textColor="@android:color/background_light"
                         android:text="@string/add" />
                 </LinearLayout>
 

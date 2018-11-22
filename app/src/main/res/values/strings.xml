@@ -115,5 +115,13 @@
     <string name="quiz_ready">Question Ready</string>
     <string name="quiz_not_ready">Need to edit this question</string>
     <string name="no_queestions">No questions added</string>
+    <string name="question_added">Question added</string>
+    <string name="question_to_answer">Question to answer</string>
+    <string name="options">Options</string>
+    <string name="correct_answer">Correct answer</string>
+    <string name="dragdrop_help1">This will be shown at the top of the quiz and will provide instructions to the student about what to do.</string>
+    <string name="dragdrop_help2">These will be the elements that the student will have to order. Write each word or number separated by an only space and then press the button just on the right side to confirm the values.</string>
+    <string name="dragdrop_help3">In this section you have to drag the elements of the second box in the correct order to the first box. Hold an element for a little bit to drag it. There\'s no need to take all the elements from the second box, you can leave someones out of the correct answer.
+    To restart the values to drag, you can press the button at the right side of save, that will clean the options panel and will let you write again.</string>
 
 </resources>

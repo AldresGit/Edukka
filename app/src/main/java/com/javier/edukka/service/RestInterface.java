@@ -102,7 +102,7 @@ public interface RestInterface {
 
     @FormUrlEncoded
     @POST("game/edit")
-    Call<GameModel> updateGame(@Field("title") String title, @Field("description") String description, @Field("difficulty") String difficulty,  @Field("time") String time, @Field("id") String gameId);
+    Call<GameModel> updateGame(@Field("title") String title, @Field("description") String description, @Field("difficulty") String difficulty,  @Field("time") String time, @Field("visibility") String visibility, @Field("id") String gameId);
 
     @FormUrlEncoded
     @POST("game/delete")
@@ -133,11 +133,11 @@ public interface RestInterface {
 
     @FormUrlEncoded
     @POST("quiz/new")
-    Call<QuizModel> createQuiz(@Field("question") String question, @Field("answer") String answer, @Field("options") String options, @Field("type") String type, @Field("game_id") int gameId, @Field("edited") String edited);
+    Call<QuizModel> createQuiz(@Field("question") String question, @Field("answer") String answer, @Field("options") String options, @Field("type") String type, @Field("game_id") int gameId);
 
     @FormUrlEncoded
     @POST("quiz/edit")
-    Call<QuizModel> updateQuiz(@Field("question") String question, @Field("answer") String answer, @Field("options") String options, @Field("edited") String edited, @Field("id") int quizId);
+    Call<QuizModel> updateQuiz(@Field("question") String question, @Field("answer") String answer, @Field("options") String options, @Field("id") int quizId);
 
     @FormUrlEncoded
     @POST("quiz/delete")

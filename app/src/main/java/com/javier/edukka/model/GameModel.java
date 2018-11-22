@@ -29,13 +29,16 @@ public class GameModel {
     @SerializedName("time")
     @Expose
     private String time;
+    @SerializedName("visibility")
+    @Expose
+    private String visibility;
     @SerializedName("classId")
     @Expose
     private String classId;
 
     public GameModel() {}
 
-    public GameModel(String id, String subject, String title, String description, String locale, String difficulty, String vote, String time, String classId) {
+    public GameModel(String id, String subject, String title, String description, String locale, String difficulty, String vote, String time, String visibility, String classId) {
         super();
         this.id = id;
         this.subject = subject;
@@ -45,6 +48,7 @@ public class GameModel {
         this.difficulty = difficulty;
         this.vote = vote;
         this.time = time;
+        this.visibility = visibility;
         this.classId = classId;
     }
 
@@ -107,6 +111,10 @@ public class GameModel {
     public String getTime() { return time; }
 
     public void setTime(String time) { this.time = time; }
+
+    public String getVisibility() { return visibility; }
+
+    public void setVisibility(String visibility) { this.visibility = visibility; }
 
     public String getClassId() { return classId; }
 

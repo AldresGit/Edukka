@@ -115,5 +115,13 @@
     <string name="quiz_ready">Pregunta Preparada</string>
     <string name="quiz_not_ready">Se necesita editar esta pregunta</string>
     <string name="no_queestions">No hay preguntas añadidas</string>
+    <string name="question_added">Pregunta añadida</string>
+    <string name="question_to_answer">Pregunta a responder</string>
+    <string name="options">Opciones</string>
+    <string name="correct_answer">Respuesta correcta</string>
+    <string name="dragdrop_help1">Esto se mostrará en la parte superior de la pregunta, dando instrucciones al alumno sobre qué hacer.</string>
+    <string name="dragdrop_help2">Estos serán los elementos que el alumno tendrá que ordenar. Escriba cada palabra o número separado por un espacio y luego pulse el botón justo a la derecha para confirmar los valores.</string>
+    <string name="dragdrop_help3">En esta seccion debe arrastrar los elementos de la segunda caja hacia la primera. Mantenga un elemento seleccionado por un breve instante para agarrarlo. No hay necesidad de coger todos los elementos de la segunda caja, puede dejar algunos o todos fuera de la respuesta correcta.
+    Para reiniciar los valores a arrastrar, puede presionar el boton del lado derecho de guardar, esto vaciara el panel de opciones y le permitirá escribirlos de nuevo</string>
 
 </resources>

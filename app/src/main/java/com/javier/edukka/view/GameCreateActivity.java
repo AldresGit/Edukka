@@ -108,7 +108,7 @@ public class GameCreateActivity extends AppCompatActivity {
             String level = HelperClient.levelCode(difficulty.getText().toString());
 
             request = restInterface.createGame(subject, title.getText().toString(), description.getText().toString(),
-                     Locale.getDefault().getLanguage(), level, timeLimit.getText().toString(), "1");            //CAMBIAR EL ID DE LA CLASE
+                     Locale.getDefault().getLanguage(), level, timeLimit.getText().toString(),"1");            //CAMBIAR EL ID DE LA CLASE
 
             request.enqueue(new Callback<GameModel>(){
                  @Override

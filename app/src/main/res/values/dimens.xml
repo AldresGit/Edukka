@@ -49,4 +49,11 @@
     <dimen name="play_complete">30sp</dimen>
     <dimen name="play_question">25sp</dimen>
     <dimen name="play_option">20sp</dimen>
+
+    <dimen name="edit_marginTop">16dp</dimen>
+    <dimen name="edit_marginLeft">36dp</dimen>
+    <dimen name="edit_marginRight">36dp</dimen>
+    <dimen name="edit_saveButton">320dp</dimen>
+    <dimen name="helpcard_elevation">10dp</dimen>
+    <dimen name="helptext_bottomMargin">40dp</dimen>
 </resources>

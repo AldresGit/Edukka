@@ -203,17 +203,18 @@ public class GameModifyActivity extends AppCompatActivity {
             final Call<GameModel> request;
             String level = HelperClient.levelCode(difficulty.getText().toString());
             request = restInterface.updateGame(title.getText().toString(), description.getText().toString(), level,
-                    timeLimit.getText().toString(), String.valueOf(position));
+                    timeLimit.getText().toString(), "yes", String.valueOf(position));                         //-------------Canmbiar visibilidad------------------//
             request.enqueue(new Callback<GameModel>() {
                 @Override
                 public void onResponse(Call<GameModel> call, Response<GameModel> response) {
                     Toast.makeText(GameModifyActivity.this, R.string.modified_game, Toast.LENGTH_SHORT).show();
-                    GameSingleton.getInstance().setGameModel(response.body());
-                    Intent i = new Intent(GameModifyActivity.this, GameModifyActivity.class);
-                    i.putExtra(EXTRA_POSITION, Integer.parseInt(response.body().getId()));
-                    i.putExtra(SUBJECT_NAME, response.body().getSubject());
-                    finish();
-                    startActivity(i);
+                    //GameSingleton.getInstance().setGameModel(response.body());
+                    //Intent i = new Intent(GameModifyActivity.this, GameModifyActivity.class);
+                    //i.putExtra(EXTRA_POSITION, Integer.parseInt(response.body().getId()));
+                    //i.putExtra(SUBJECT_NAME, response.body().getSubject());
+                    //finish();
+                    //startActivity(i);
+                    loadJSON();
                 }
 
                 @Override
@@ -224,6 +225,58 @@ public class GameModifyActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public void createQuiz(View v) {
+        String type = questionType.getText().toString();
+        switch(type){
+            case "Drag Drop":
+                type = "dragdrop";
+                break;
+            case "Picker":
+                type = "picker";
+                break;
+            case "Drag Name":
+                type = "dragname";
+                break;
+            case "Drag Image":
+                type = "dragimage";
+                break;
+            case "Checkbox":
+                type = "checkbox";
+                break;
+            case "Complete":
+                type = "complete";
+                break;
+            case "Sound":
+                type = "sound";
+                break;
+            case "Image":
+                type = "image";
+                break;
+            case "Spinner":
+                type = "spinner";
+                break;
+            case "Select":
+                type = "select";
+                break;
+        }
+
+        RestInterface restInterface = RetrofitClient.getInstance();
+        final Call<QuizModel> request2;
+        request2 = restInterface.createQuiz("Bla", "Bla", "Bla", type, position);
+        request2.enqueue(new Callback<QuizModel>() {
+            @Override
+            public void onResponse(Call<QuizModel> call, Response<QuizModel> response) {
+                Toast.makeText(GameModifyActivity.this, R.string.question_added, Toast.LENGTH_SHORT).show();
+                loadJSON2();
+            }
+
+            @Override
+            public void onFailure(Call<QuizModel> call, Throwable t) {
+                Toast.makeText(GameModifyActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.javier.edukka.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 
 import com.javier.edukka.R;
 import com.javier.edukka.model.QuizModel;
+import com.javier.edukka.view.DragDropActivity;
+import com.javier.edukka.view.GameModifyActivity;
 
 import java.util.ArrayList;
 
@@ -33,7 +36,35 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
         holder.quiz_type.setText(mArrayList.get(i).getType());
-        holder.quiz_question.setText(mArrayList.get(i).getQuestion());
+        switch(mArrayList.get(i).getType()) {
+            case "dragdrop":
+                holder.quiz_question.setText(mArrayList.get(i).getAnswer());
+                break;
+            case "picker":
+                holder.quiz_question.setText(mArrayList.get(i).getQuestion());
+                break;
+            case "dragname":
+                holder.quiz_question.setText(mArrayList.get(i).getQuestion());
+                break;
+            case "dragimage":
+                holder.quiz_question.setText(mArrayList.get(i).getQuestion());
+                break;
+            case "checkbox":
+                holder.quiz_question.setText(mArrayList.get(i).getQuestion());
+                break;
+            case "complete":
+                holder.quiz_question.setText(mArrayList.get(i).getAnswer());
+                break;
+            case "sound":
+                holder.quiz_question.setText(mArrayList.get(i).getOptions());
+                break;
+            case "image":
+                holder.quiz_question.setText(mArrayList.get(i).getQuestion());
+                break;
+            case "spinner":
+                holder.quiz_question.setText(mArrayList.get(i).getQuestion());
+                break;
+        }
         if(mArrayList.get(i).getEdited().equals("yes")) {
             holder.quiz_edited.setText(R.string.quiz_ready);
             holder.quiz_edited.setTextColor(Color.GREEN);
@@ -66,9 +97,12 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
                     int i = Integer.parseInt(mArrayList.get(getAdapterPosition()).getId());
                     String s = mArrayList.get(getAdapterPosition()).getType();
                     Context context = v.getContext();
+                    Intent intent;
 
                     switch(s){
-                        case "Drag Drop":
+                        case "dragdrop":
+                            intent = new Intent(context, DragDropActivity.class);
+                            context.startActivity(intent);
                             break;
 
                         case "Picker":

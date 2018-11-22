@@ -115,17 +115,26 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.GameActivity" />
         </activity>
-        <activity android:name=".view.GameCreateActivity"
+        <activity
+            android:name=".view.GameCreateActivity"
             android:parentActivityName=".view.SearchActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.SearchActivity" />
         </activity>
-        <activity android:name=".view.GameModifyActivity"
+        <activity
+            android:name=".view.GameModifyActivity"
             android:parentActivityName=".view.SearchActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.SearchActivity" />
+        </activity>
+        <activity
+            android:name=".view.DragDropActivity"
+            android:parentActivityName=".view.GameModifyActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.GameModifyActivity" />
         </activity>
     </application>
 
