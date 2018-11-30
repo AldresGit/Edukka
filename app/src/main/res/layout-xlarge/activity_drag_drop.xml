@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.DragDropActivity">
+    tools:context=".editor.DragDropActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -155,8 +155,9 @@
                     android:background="@color/colorPrimary"
                     android:backgroundTint="@color/colorPrimaryDark"
                     android:backgroundTintMode="src_in"
-                    android:textColor="@android:color/background_light"
-                    android:text="@string/save" />
+                    android:onClick="save"
+                    android:text="@string/save"
+                    android:textColor="@android:color/background_light" />
 
                 <ImageButton
                     android:id="@+id/reload"
@@ -165,9 +166,10 @@
                     android:layout_marginStart="@dimen/md_keylines_x2"
                     android:layout_toEndOf="@+id/save"
                     android:background="?android:colorBackground"
-                    android:tint="@color/colorPrimary"
                     android:contentDescription="TODO"
-                    android:src="@drawable/reset_icon_black" />
+                    android:onClick="reset"
+                    android:src="@drawable/reset_icon_black"
+                    android:tint="@color/colorPrimary" />
             </RelativeLayout>
 
         </LinearLayout>

@@ -8,18 +8,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.javier.edukka.R;
+import com.javier.edukka.editor.DragNameActivity;
+import com.javier.edukka.editor.PickerActivity;
 import com.javier.edukka.model.QuizModel;
-import com.javier.edukka.view.DragDropActivity;
-import com.javier.edukka.view.GameModifyActivity;
+import com.javier.edukka.editor.DragDropActivity;
 
 import java.util.ArrayList;
 
 public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
+    private String EXTRA_POSITION = "position";
     private final ArrayList<QuizModel> mArrayList;
 
     public QuizAdapter(ArrayList<QuizModel> arrayList) {
@@ -38,7 +38,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
         holder.quiz_type.setText(mArrayList.get(i).getType());
         switch(mArrayList.get(i).getType()) {
             case "dragdrop":
-                holder.quiz_question.setText(mArrayList.get(i).getAnswer());
+                holder.quiz_question.setText(mArrayList.get(i).getQuestion());
                 break;
             case "picker":
                 holder.quiz_question.setText(mArrayList.get(i).getQuestion());
@@ -94,7 +94,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int i = Integer.parseInt(mArrayList.get(getAdapterPosition()).getId());
+                    int id = Integer.parseInt(mArrayList.get(getAdapterPosition()).getId());
                     String s = mArrayList.get(getAdapterPosition()).getType();
                     Context context = v.getContext();
                     Intent intent;
@@ -102,34 +102,41 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
                     switch(s){
                         case "dragdrop":
                             intent = new Intent(context, DragDropActivity.class);
+                            intent.putExtra(EXTRA_POSITION, id);
                             context.startActivity(intent);
                             break;
 
-                        case "Picker":
+                        case "picker":
+                            intent = new Intent(context, PickerActivity.class);
+                            intent.putExtra(EXTRA_POSITION, id);
+                            context.startActivity(intent);
                             break;
 
-                        case "Drag Name":
+                        case "dragname":
+                            intent = new Intent(context, DragNameActivity.class);
+                            intent.putExtra(EXTRA_POSITION, id);
+                            context.startActivity(intent);
                             break;
 
-                        case "Drag Image":
+                        case "dragimage":
                             break;
 
-                        case "Checkbox":
+                        case "checkbox":
                             break;
 
-                        case "Complete":
+                        case "complete":
                             break;
 
-                        case "Sound":
+                        case "sound":
                             break;
 
-                        case "Image":
+                        case "image":
                             break;
 
-                        case "Spinner":
+                        case "spinner":
                             break;
 
-                        case "Select":
+                        case "select":
                             break;
 
                     }

@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -130,12 +133,27 @@
                 android:value=".view.SearchActivity" />
         </activity>
         <activity
-            android:name=".view.DragDropActivity"
+            android:name=".editor.DragDropActivity"
             android:parentActivityName=".view.GameModifyActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.GameModifyActivity" />
         </activity>
+        <activity
+            android:name=".editor.PickerActivity"
+            android:parentActivityName=".view.GameModifyActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.GameModifyActivity" />
+        </activity>
+        <activity
+            android:name=".editor.DragNameActivity"
+            android:parentActivityName=".view.GameModifyActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.GameModifyActivity" />
+        </activity>
+        <activity android:name=".editor.CheckboxActivity"></activity>
     </application>
 
 </manifest>

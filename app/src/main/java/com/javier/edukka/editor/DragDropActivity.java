@@ -1,4 +1,4 @@
-package com.javier.edukka.view;
+package com.javier.edukka.editor;
 
 import android.content.ClipData;
 import android.content.Context;
@@ -13,8 +13,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -22,18 +24,30 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.javier.edukka.R;
+import com.javier.edukka.model.QuizModel;
 import com.javier.edukka.service.DoubleClickListener;
+import com.javier.edukka.service.RestInterface;
+import com.javier.edukka.service.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class DragDropActivity extends AppCompatActivity {
-
+    private String EXTRA_POSITION = "position";
     private EditText question, options;
     private List<String> answer;
     private RecyclerView recyclerView;
+    private ImageButton validate, reload;
+    private Button save;
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +56,9 @@ public class DragDropActivity extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        validate = (ImageButton) findViewById(R.id.validate);
+        reload = (ImageButton) findViewById(R.id.reload);
+        save = (Button) findViewById(R.id.save);
         question = (EditText) findViewById(R.id.question);
         options = (EditText) findViewById(R.id.options);
 
@@ -65,6 +82,28 @@ public class DragDropActivity extends AppCompatActivity {
         options.addTextChangedListener(watcher);
         answer = new ArrayList<>();
 
+        loadJSON();
+
+        reload.setEnabled(false);
+        save.setEnabled(false);
+    }
+
+    public void loadJSON() {
+        id = getIntent().getIntExtra(EXTRA_POSITION, 0);
+        RestInterface restInterface = RetrofitClient.getInstance();
+        final Call<QuizModel> request = restInterface.getQuiz(id);
+        request.enqueue(new Callback<QuizModel>() {
+            @Override
+            public void onResponse(Call<QuizModel> call, Response<QuizModel> response) {
+                question.setText(response.body().getQuestion());
+                options.setText(response.body().getAnswer());
+            }
+
+            @Override
+            public void onFailure(Call<QuizModel> call, Throwable t) {
+                Toast.makeText(DragDropActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private boolean checkFieldValidation() {
@@ -87,11 +126,9 @@ public class DragDropActivity extends AppCompatActivity {
             questionlist.add(question.getText().toString());
             optionslist.add(options.getText().toString());
 
-            Toast.makeText(DragDropActivity.this, "Patata", Toast.LENGTH_LONG).show();
-
             recyclerView = (RecyclerView) findViewById(R.id.rvOptions);
             recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
-            MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(getApplicationContext(), findViewById(R.id.answerLayout), Arrays.asList(options.getText().toString().split(",")));
+            MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(getApplicationContext(), findViewById(R.id.answerLayout), Arrays.asList(options.getText().toString().split(" ")));
             recyclerView.setAdapter(adapter);
             recyclerView.setHasFixedSize(true);
             View.OnDragListener dragListener = new View.OnDragListener() {
@@ -132,8 +169,64 @@ public class DragDropActivity extends AppCompatActivity {
             };
             findViewById(R.id.optionsLayout).setOnDragListener(dragListener);
             findViewById(R.id.answerLayout).setOnDragListener(dragListener);
+            options.setEnabled(false);
+            validate.setEnabled(false);
+            reload.setEnabled(true);
+            save.setEnabled(true);
         }
     }
+
+    public void reset(View view) {
+        answer.clear();
+        options.setEnabled(true);
+        validate.setEnabled(true);
+        
+        reload.setEnabled(false);
+        save.setEnabled(false);
+        LinearLayout container = (LinearLayout) findViewById(R.id.answerLayout);
+        container.removeAllViews();
+    }
+
+
+    public void save(View view) {
+        String correctAnswer = new String();
+        for(int i = 0; i < answer.size() - 1; i++) {
+            correctAnswer = correctAnswer.concat(answer.get(i));
+            correctAnswer = correctAnswer.concat("");
+        }
+        correctAnswer = correctAnswer.concat(answer.get(answer.size() - 1));
+        correctAnswer = correctAnswer.substring(1);
+
+        List<String> sortedOptions = Arrays.asList(options.getText().toString().split(" "));
+        Random rnd = new Random();
+        rnd.setSeed(1000);
+        Collections.shuffle(sortedOptions, rnd);
+
+        String finalOptions = new String();
+        for(int i = 0; i < sortedOptions.size() - 1; i++) {
+            finalOptions = finalOptions.concat(sortedOptions.get(i));
+            finalOptions = finalOptions.concat(",");
+        }
+        finalOptions = finalOptions.concat(sortedOptions.get(sortedOptions.size() - 1));
+
+        RestInterface restInterface = RetrofitClient.getInstance();
+        Call<QuizModel> request = restInterface.updateQuiz(question.getText().toString(), correctAnswer, finalOptions, id);
+        request.enqueue(new Callback<QuizModel>() {
+            @Override
+            public void onResponse(Call<QuizModel> call, Response<QuizModel> response) {
+                Toast.makeText(DragDropActivity.this, R.string.quiz_saved, Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<QuizModel> call, Throwable t) {
+                finish();
+                startActivity(getIntent());
+                Toast.makeText(DragDropActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 
     class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
@@ -190,5 +283,11 @@ public class DragDropActivity extends AppCompatActivity {
                 textView = (TextView) itemView.findViewById(R.id.text);
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return true;
     }
 }

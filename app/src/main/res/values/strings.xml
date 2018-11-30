@@ -119,9 +119,25 @@
     <string name="question_to_answer">Question to answer</string>
     <string name="options">Options</string>
     <string name="correct_answer">Correct answer</string>
-    <string name="dragdrop_help1">This will be shown at the top of the quiz and will provide instructions to the student about what to do.</string>
-    <string name="dragdrop_help2">These will be the elements that the student will have to order. Write each word or number separated by an only space and then press the button just on the right side to confirm the values.</string>
+    <string name="dragdrop_help1">This will be shown at the top of the screen and will provide instructions to the student about what to do.</string>
+    <string name="dragdrop_help2">These will be the elements that the student will have to order. Write each word or number separated by an only space and then press the button just below to confirm the values. This will disable for now the writing in this field.</string>
     <string name="dragdrop_help3">In this section you have to drag the elements of the second box in the correct order to the first box. Hold an element for a little bit to drag it. There\'s no need to take all the elements from the second box, you can leave someones out of the correct answer.
-    To restart the values to drag, you can press the button at the right side of save, that will clean the options panel and will let you write again.</string>
+    To restart the values to drag, you can press the button at the right side of the save button, that will clean the options panel and will let you write again.</string>
+    <string name="quiz_saved">Quiz saved</string>
+    <string name="answer">Answer</string>
+    <string name="picker_help2">Here you have to write the correct numeric answer to the question. TThe answer can be from dates to negative numbers. After writing it you must press the button just below to confirm the value and finish editing the question. This will disable for now the writing in this field.</string>
+    <string name="picker_help3">This area will show the previous view of what the students will see and the interaction that they can have. It is only indicative, to change the value here won´t change the correct answer. If you want to write another value you should press the button next to the save button to get enable again the writing.</string>
+    <string name="images">Images</string>
+    <string name="image_1">Image 1</string>
+    <string name="image_2">Image 2</string>
+    <string name="image_3">Image 3</string>
+    <string name="answers">Answers</string>
+    <string name="select_application">Select the application</string>
+    <string name="image_error">Could not load the image</string>
+    <string name="need_3_images_error">You need to add 3 images to save the question</string>
+    <string name="get_permises">This app needs access to your file storage so that it can read photos.</string>
+    <string name="get_permises_failed">Permission has been denied</string>
+    <string name="dragname_help2">Here you have to select 3 pictures of your gallery. Press on one of the three boxes to access your device images. When you have selected one and want to remove it, just press again on it and it will remove.</string>
+    <string name="dragname_help3">This area have the word or words that give meaning to the images you want to upload. The student will have to drag this words to the images uploaded, so try to be the most specific you can.</string>
 
 </resources>

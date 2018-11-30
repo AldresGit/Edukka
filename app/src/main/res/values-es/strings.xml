@@ -119,9 +119,25 @@
     <string name="question_to_answer">Pregunta a responder</string>
     <string name="options">Opciones</string>
     <string name="correct_answer">Respuesta correcta</string>
-    <string name="dragdrop_help1">Esto se mostrará en la parte superior de la pregunta, dando instrucciones al alumno sobre qué hacer.</string>
-    <string name="dragdrop_help2">Estos serán los elementos que el alumno tendrá que ordenar. Escriba cada palabra o número separado por un espacio y luego pulse el botón justo a la derecha para confirmar los valores.</string>
-    <string name="dragdrop_help3">En esta seccion debe arrastrar los elementos de la segunda caja hacia la primera. Mantenga un elemento seleccionado por un breve instante para agarrarlo. No hay necesidad de coger todos los elementos de la segunda caja, puede dejar algunos o todos fuera de la respuesta correcta.
-    Para reiniciar los valores a arrastrar, puede presionar el boton del lado derecho de guardar, esto vaciara el panel de opciones y le permitirá escribirlos de nuevo</string>
+    <string name="dragdrop_help1">Esto se mostrará en la parte superior de la pantalla, dando instrucciones al alumno sobre qué hacer.</string>
+    <string name="dragdrop_help2">Estos serán los elementos que el alumno tendrá que ordenar. Escriba cada palabra o número separado por un espacio y luego pulse el botón justo debajo para confirmar los valores. Esto inhabilitara de momento la escritura en este campo.</string>
+    <string name="dragdrop_help3">En esta sección debe arrastrar los elementos de la segunda caja hacia la primera. Mantenga un elemento seleccionado por un breve instante para agarrarlo. No es necesario coger todos los elementos de la segunda caja, se pueden dejar algunos o todos fuera de la respuesta correcta.
+    Para reiniciar los valores a arrastrar, se puede presionar el botón del lado derecho del botón de guardar, que vaciará el panel de opciones y le permitirá escribirlos de nuevo.</string>
+    <string name="quiz_saved">Pregunta guardada</string>
+    <string name="answer">Respuesta</string>
+    <string name="picker_help2">Aquí se debe escribir la respuesta numérica correcta a la pregunta. Pueden ser desde fechas hasta numeros negativos. Después de escribirla se debe pulsar el botón justo debajo para confirmar el valor y terminar de editar la pregunta. Esto inhabilitara de momento la escritura en este campo.</string>
+    <string name="picker_help3">En esta zona se muestra la vista previa de lo que verán los alumnos y la interacción que puede haber. Es solo orientativo, cambiar el valor aquí no cambia la respuesta. Si quiere volver a escribir otro valor debe pulsar el botón justo al lado del botón guardar para habilitar de nuevo la escritura.</string>
+    <string name="images">Imágenes</string>
+    <string name="image_1">Imagen 1</string>
+    <string name="image_2">Imagen 2</string>
+    <string name="image_3">Imagen 3</string>
+    <string name="answers">Respuestas</string>
+    <string name="select_application">Selecciona la aplicación</string>
+    <string name="image_error">No see ha podido cargar la imagen</string>
+    <string name="need_3_images_error">Necesitas agregar 3 imágenes para guardar la pregunta</string>
+    <string name="get_permises">Esta app necesita acceder a tus archivos para leer la imagen.</string>
+    <string name="get_permises_failed">El permiso ha sido denegado.</string>
+    <string name="dragname_help2">Aqui debes seleccionar 3 imágenes de tu galeria. Pulsa en alguno de los recuadros para acceder a las imágenes de tu dispositivo. Cuando hayas seleccionado una imagen y quieras borrarla simplemente pulsa de nueevo en ella y se removerá.</string>
+    <string name="dragname_help3">En este área debes escribir la palabra o palabras relacionadas a la imagen subida anteriormente. Esto será lo que el alumno tenga que arrastrar hacia la imagen subida, por lo que intente ser lo más específico posible.</string>
 
 </resources>

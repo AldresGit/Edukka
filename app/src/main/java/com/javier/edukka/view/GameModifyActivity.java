@@ -228,6 +228,7 @@ public class GameModifyActivity extends AppCompatActivity {
     }
 
     public void createQuiz(View v) {
+        String question = "", answer = "", options = "";
         String type = questionType.getText().toString();
         switch(type){
             case "Drag Drop":
@@ -235,6 +236,7 @@ public class GameModifyActivity extends AppCompatActivity {
                 break;
             case "Picker":
                 type = "picker";
+                answer = "0";
                 break;
             case "Drag Name":
                 type = "dragname";
@@ -264,7 +266,7 @@ public class GameModifyActivity extends AppCompatActivity {
 
         RestInterface restInterface = RetrofitClient.getInstance();
         final Call<QuizModel> request2;
-        request2 = restInterface.createQuiz("Bla", "Bla", "Bla", type, position);
+        request2 = restInterface.createQuiz(question, answer, options, type, position);
         request2.enqueue(new Callback<QuizModel>() {
             @Override
             public void onResponse(Call<QuizModel> call, Response<QuizModel> response) {
@@ -279,12 +281,6 @@ public class GameModifyActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        finish();
-        return true;
-    }
-
     private void refresh() {
         mySwipeRefreshLayout.setOnRefreshListener(
                 new SwipeRefreshLayout.OnRefreshListener() {
@@ -294,6 +290,18 @@ public class GameModifyActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadJSON2();
     }
 
 }
