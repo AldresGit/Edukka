@@ -114,30 +114,78 @@
     <string name="quiz_type">Quiz Type</string>
     <string name="quiz_ready">Pregunta Preparada</string>
     <string name="quiz_not_ready">Se necesita editar esta pregunta</string>
-    <string name="no_queestions">No hay preguntas añadidas</string>
+    <string name="no_questions">No hay preguntas añadidas</string>
     <string name="question_added">Pregunta añadida</string>
     <string name="question_to_answer">Pregunta a responder</string>
     <string name="options">Opciones</string>
     <string name="correct_answer">Respuesta correcta</string>
+
     <string name="dragdrop_help1">Esto se mostrará en la parte superior de la pantalla, dando instrucciones al alumno sobre qué hacer.</string>
     <string name="dragdrop_help2">Estos serán los elementos que el alumno tendrá que ordenar. Escriba cada palabra o número separado por un espacio y luego pulse el botón justo debajo para confirmar los valores. Esto inhabilitara de momento la escritura en este campo.</string>
     <string name="dragdrop_help3">En esta sección debe arrastrar los elementos de la segunda caja hacia la primera. Mantenga un elemento seleccionado por un breve instante para agarrarlo. No es necesario coger todos los elementos de la segunda caja, se pueden dejar algunos o todos fuera de la respuesta correcta.
     Para reiniciar los valores a arrastrar, se puede presionar el botón del lado derecho del botón de guardar, que vaciará el panel de opciones y le permitirá escribirlos de nuevo.</string>
-    <string name="quiz_saved">Pregunta guardada</string>
-    <string name="answer">Respuesta</string>
+
     <string name="picker_help2">Aquí se debe escribir la respuesta numérica correcta a la pregunta. Pueden ser desde fechas hasta numeros negativos. Después de escribirla se debe pulsar el botón justo debajo para confirmar el valor y terminar de editar la pregunta. Esto inhabilitara de momento la escritura en este campo.</string>
     <string name="picker_help3">En esta zona se muestra la vista previa de lo que verán los alumnos y la interacción que puede haber. Es solo orientativo, cambiar el valor aquí no cambia la respuesta. Si quiere volver a escribir otro valor debe pulsar el botón justo al lado del botón guardar para habilitar de nuevo la escritura.</string>
+
+    <string name="dragname_help2">Aqui debes seleccionar 3 imágenes de tu galeria. Pulsa en alguno de los recuadros para acceder a las imágenes de tu dispositivo. Cuando hayas seleccionado una imagen y quieras borrarla simplemente pulsa de nueevo en ella y se removerá.</string>
+    <string name="dragname_help3">En este área debes escribir la palabra o palabras relacionadas a la imagen subida anteriormente. Esto será lo que el alumno tenga que arrastrar hacia la imagen subida, por lo que intente ser lo más específico posible.</string>
+
+    <string name="completecard_help1">Esta es la respuesta correcta a la pregunta, es decir, el alumno debe escribir esto al ver la imagen. Como pista a estas preguntas siempre se mostrara la primera letra de la palabra o frase. Este campo no admite ninguna coma en él.</string>
+    <string name="completecard_help2">Esta es la imagen que dejaras a modo de pista para que el alumno responda correctamente. Aparecerá en la parte superior de la pantalla de juego.</string>
+
+
+
+    <string name="quiz_saved">Pregunta guardada</string>
+    <string name="answer">Respuesta</string>
+
     <string name="images">Imágenes</string>
     <string name="image_1">Imagen 1</string>
     <string name="image_2">Imagen 2</string>
     <string name="image_3">Imagen 3</string>
+    <string name="image_4">Imagen 4</string>
+    <string name="image_5">Imagen 5</string>
+    <string name="image_6">Imagen 6</string>
     <string name="answers">Respuestas</string>
+
+    <string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
+    <string name="option_3">Option 3</string>
+
     <string name="select_application">Selecciona la aplicación</string>
     <string name="image_error">No see ha podido cargar la imagen</string>
-    <string name="need_3_images_error">Necesitas agregar 3 imágenes para guardar la pregunta</string>
+    <string name="need_3_images_error">Necesitas agregar todas las imágenes para guardar la pregunta</string>
+    <string name="need_6_images_error">Necesitas agregar 6 imágenes para guardar la pregunta</string>
     <string name="get_permises">Esta app necesita acceder a tus archivos para leer la imagen.</string>
     <string name="get_permises_failed">El permiso ha sido denegado.</string>
-    <string name="dragname_help2">Aqui debes seleccionar 3 imágenes de tu galeria. Pulsa en alguno de los recuadros para acceder a las imágenes de tu dispositivo. Cuando hayas seleccionado una imagen y quieras borrarla simplemente pulsa de nueevo en ella y se removerá.</string>
-    <string name="dragname_help3">En este área debes escribir la palabra o palabras relacionadas a la imagen subida anteriormente. Esto será lo que el alumno tenga que arrastrar hacia la imagen subida, por lo que intente ser lo más específico posible.</string>
+
+    <string name="image">Imagen</string>
+    <string name="invalid_coma_character">El carácter "," no es válido.</string>
+
+    <string name="left_text">Texto a la izquierda</string>
+    <string name="right_text">Texto a la derecha</string>
+    <string name="true_value">Verdadero</string>
+    <string name="false_value">Falso</string>
+    <string name="truefalse_value">Verdadero,Falso</string>
+
+    <string name="sound_edit">Sonido</string>
+    <string name="sound_recording">Grabando...</string>
+
+    <string name="dragimage_help2">Aquí debes seleccionar 6 imágenes de la galería y darles una pequeña descripción subre lo que es la imagen en sí. Estas apareceran en la pantalla y el alumno debera selecciona aquellas que pertenezcan a la solución. Es necesario coger las 6 imágenes de la galería, y el carácter \',\' y \';\' son inválidos aquí.</string>
+    <string name="dragimage_help3">Para seleccionar la respuesta correcta, o en este caso, las imágenes correctas que pertenecen a la respuesta, debes pulsar la caja justo a la derecha de la descripción de cada imagen. Aquellas que hayan sido pulsadas serán las imágenes que el alumno tendrá que arrastrarr a la caja de respuesta correcta.</string>
+
+    <string name="checkbox_help2">Aquí debes escribir todas las posibles opciones que habrá en el checkbox, separadas con un único espacio entre cada opción. El carácter \',\' y \';\' no son validos aquí. Cuando hayas acabado, pulsa el botón justo abajo, el botón de Validación, para continuar la edición de esta pregunta. Esto desactivará este area hasta que pulses el botón Reset.</string>
+    <string name="checkbox_help3">Una vez pulses el botón de Validación, el checkbox con todas las opciones escritas anteriormente aparecerá y debes seleccionar las que son correctas, justo como un alumno haría. Despuées pulsa el botón Guardar o el botón a su lado, el botón Reset, para habilitar de nuevo el área de opciones y escribir de nuevo las opciones disponibles.</string>
+
+    <string name="sound_help2">El boton Play verde reproducirá el sonido guardado aquí si existe, si no hay sonido estará deshabilitado, Y el botón Rec o grabar te permitirá grabar con tu micrófono un nuevo archivo de sonido para añadirlo a la aplicación. Cuando empieces a grabar, se deshabilitarán el resto de campos y donde estaba el botón Reec aparecera el botón Stop para detener la grabación.</string>
+    <string name="sound_help3">In the Answer and Options area you have to write the four options that the student will have in screen, an the one in the answer area have to be the correct.</string>
+
+    <string name="image_help2">Aquí deberás subir la imagen que forma parte de la respuesta correcta y una pequeña descripción sobre la misma. La descripción no ayudará al alumno cuando juegue, pero se mostrará en las correcciones.</string>
+    <string name="image_help3">Las otras opciones deben rellenarse también, por lo que deberás seleccionar otras imágenes de la galería y ponerles sus respectivas descripciones.</string>
+
+    <string name="spinner_help2">Hay 3 áreas a escribir, las de izquierda y derecha se mostraran a los lados de las opciones a seleccionar por el alumno, y pueden dejarse vacías. El área del centro es en la que se escriben las opciones, separadas con un único espacio. Los cáracteres \',\' y \';\' no son válidos. Cuando todo esté preparado, Pulsa el botón de Validación para continuar la edición, ek que está justo debajo de las opciones.</string>
+    <string name="spinner_help3">Este área mostrará la forma final de la pregunta, Con los textos de izquierda y derecha y las opciones en el medio. Selecciona la respuesta correcta como lo haría un alumno y pulsa el botón de Guardar para confirmar o pulsa el botón Reset para escribir las opciones de nuevo.</string>
+
+    <string name="select_help2">Para cambiar el valor de la respuesta correcta simplemente pulsa el botón con el texto de Verdadero o Falso y este cambiará al otro valor.</string>
 
 </resources>

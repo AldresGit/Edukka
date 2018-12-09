@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".editor.ImageEditorActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="@color/colorSpanish"
+            app:expandedTitleTextAppearance="@style/expanded_app_bar"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseParallaxMultiplier="1.0"></android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/md_keylines_x3"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="767dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/question_to_answer"
+                    android:layout_marginStart="@dimen/edit_marginLeft"
+                    android:layout_marginEnd="@dimen/edit_marginRight"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_marginTop"
+                    android:layout_marginStart="@dimen/edit_marginLeft"
+                    android:layout_marginEnd="@dimen/edit_marginRight"
+                    android:ems="10"
+                    android:hint="@string/question_to_answer"
+                    android:inputType="text" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/answer"
+
+                    android:layout_marginStart="@dimen/edit_marginLeft"
+                    android:layout_marginEnd="@dimen/edit_marginRight"
+                    android:layout_marginTop="@dimen/edit_marginTop"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardElevation="@dimen/helpcard_elevation"
+                            app:cardCornerRadius="@dimen/md_keylines_x2"
+                            android:layout_marginLeft="@dimen/article_padding"
+                            android:layout_marginRight="@dimen/article_padding"
+                            android:layout_marginTop="@dimen/edit_marginTop" >
+
+                            <ImageButton
+                                android:layout_width="@dimen/play_image"
+                                android:layout_height="@dimen/play_image"
+                                android:id="@+id/image_answer"
+                                android:background="@android:color/white"
+                                android:layout_marginBottom="@dimen/article_padding"
+
+                                android:src="@drawable/add_photo_icon"
+
+                                />
+
+                            <TextView
+                                android:layout_width="@dimen/play_image"
+                                android:layout_height="wrap_content"
+                                android:padding="13dp"
+                                android:text="@string/answer"
+                                android:layout_gravity="bottom"
+                                android:background="@color/colorPrimary"
+                                android:textColor="#e3e3e3"
+                                android:textAlignment="center"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                        </android.support.v7.widget.CardView>
+
+                        <EditText
+                            android:id="@+id/edit_image_answer"
+                            android:layout_width="@dimen/play_height"
+                            android:layout_height="@dimen/article_padding"
+                            android:layout_marginRight="@dimen/article_padding"
+                            android:layout_marginTop="@dimen/image_margin"
+                            android:hint="@string/answer"/>
+
+                    </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/options"
+                    android:textAlignment="center"
+                    android:layout_marginStart="@dimen/edit_marginLeft"
+                    android:layout_marginEnd="@dimen/edit_marginRight"
+                    android:layout_marginTop="@dimen/edit_marginTop"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="@dimen/helpcard_elevation"
+                        app:cardCornerRadius="@dimen/md_keylines_x2"
+                        android:layout_marginLeft="@dimen/article_padding"
+                        android:layout_marginRight="@dimen/article_padding"
+                        android:layout_marginTop="@dimen/edit_marginTop" >
+
+                        <ImageButton
+                            android:layout_width="@dimen/play_image"
+                            android:layout_height="@dimen/play_image"
+                            android:id="@+id/image1"
+                            android:background="@android:color/white"
+                            android:layout_marginBottom="@dimen/article_padding"
+
+                            android:src="@drawable/add_photo_icon"
+
+                            />
+
+                        <TextView
+                            android:layout_width="@dimen/play_image"
+                            android:layout_height="wrap_content"
+                            android:padding="13dp"
+                            android:text="@string/image_1"
+                            android:layout_gravity="bottom"
+                            android:background="@color/colorPrimary"
+                            android:textColor="#e3e3e3"
+                            android:textAlignment="center"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="@dimen/helpcard_elevation"
+                        app:cardCornerRadius="@dimen/md_keylines_x2"
+                        android:layout_marginLeft="@dimen/article_padding"
+                        android:layout_marginRight="@dimen/article_padding"
+                        android:layout_marginTop="@dimen/edit_marginTop" >
+
+                        <ImageButton
+                            android:layout_width="@dimen/play_image"
+                            android:layout_height="@dimen/play_image"
+                            android:id="@+id/image2"
+                            android:background="@android:color/white"
+                            android:layout_marginBottom="@dimen/article_padding"
+
+                            android:src="@drawable/add_photo_icon"
+
+                            />
+
+                        <TextView
+                            android:layout_width="@dimen/play_image"
+                            android:layout_height="wrap_content"
+                            android:padding="13dp"
+                            android:text="@string/image_2"
+                            android:layout_gravity="bottom"
+                            android:background="@color/colorPrimary"
+                            android:textColor="#e3e3e3"
+                            android:textAlignment="center"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="@dimen/helpcard_elevation"
+                        app:cardCornerRadius="@dimen/md_keylines_x2"
+                        android:layout_marginLeft="@dimen/article_padding"
+                        android:layout_marginRight="@dimen/article_padding"
+                        android:layout_marginTop="@dimen/edit_marginTop" >
+
+                        <ImageButton
+                            android:layout_width="@dimen/play_image"
+                            android:layout_height="@dimen/play_image"
+                            android:id="@+id/image3"
+                            android:background="@android:color/white"
+                            android:layout_marginBottom="@dimen/article_padding"
+                            android:src="@drawable/add_photo_icon"
+
+                            />
+
+                        <TextView
+                            android:layout_width="@dimen/play_image"
+                            android:layout_height="wrap_content"
+                            android:padding="13dp"
+                            android:text="@string/image_3"
+                            android:layout_gravity="bottom"
+                            android:background="@color/colorPrimary"
+                            android:textColor="#e3e3e3"
+                            android:textAlignment="center"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/edit_marginTop"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/edit_image1"
+                        android:layout_width="@dimen/play_height"
+                        android:layout_height="@dimen/article_padding"
+                        android:layout_marginLeft="@dimen/article_padding"
+                        android:layout_marginRight="@dimen/article_padding"
+                        android:layout_marginTop="@dimen/md_keylines_x2"
+                        android:hint="@string/image_1"/>
+
+                    <EditText
+                        android:id="@+id/edit_image2"
+                        android:layout_width="@dimen/play_height"
+                        android:layout_height="@dimen/article_padding"
+                        android:layout_marginLeft="@dimen/article_padding"
+                        android:layout_marginRight="@dimen/article_padding"
+                        android:layout_marginTop="@dimen/md_keylines_x2"
+                        android:hint="@string/image_2"/>
+
+                    <EditText
+                        android:id="@+id/edit_image3"
+                        android:layout_width="@dimen/play_height"
+                        android:layout_height="@dimen/article_padding"
+                        android:layout_marginLeft="@dimen/article_padding"
+                        android:layout_marginRight="@dimen/article_padding"
+                        android:layout_marginTop="@dimen/md_keylines_x2"
+                        android:hint="@string/image_3"/>
+
+                </LinearLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/edit_marginTop">
+
+
+                    <Button
+                        android:id="@+id/save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="340dp"
+                        android:background="@color/colorPrimary"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:backgroundTintMode="src_in"
+
+                        android:text="@string/save"
+                        android:textColor="@android:color/background_light" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="506dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="@dimen/helpcard_elevation"
+                    app:cardCornerRadius="@dimen/md_keylines_x2"
+                    android:layout_marginLeft="@dimen/edit_marginTop"
+                    android:layout_marginRight="@dimen/edit_marginTop"
+                    android:layout_marginTop="@dimen/edit_marginTop" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginBottom="@dimen/helptext_bottomMargin"
+                        android:text="@string/dragdrop_help1"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/question_to_answer"
+                        android:layout_gravity="bottom"
+                        android:background="@color/colorBioGeo"
+                        android:textColor="#e3e3e3"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="@dimen/helpcard_elevation"
+                    app:cardCornerRadius="@dimen/md_keylines_x2"
+                    android:layout_marginLeft="@dimen/edit_marginTop"
+                    android:layout_marginRight="@dimen/edit_marginTop"
+                    android:layout_marginTop="@dimen/edit_marginTop" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginBottom="@dimen/helptext_bottomMargin"
+                        android:text="@string/image_help2"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/answer"
+                        android:layout_gravity="bottom"
+                        android:background="@color/colorMaths"
+                        android:textColor="#e3e3e3"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="@dimen/helpcard_elevation"
+                    app:cardCornerRadius="@dimen/md_keylines_x2"
+                    android:layout_marginLeft="@dimen/edit_marginTop"
+                    android:layout_marginRight="@dimen/edit_marginTop"
+                    android:layout_marginTop="@dimen/edit_marginTop" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginBottom="@dimen/helptext_bottomMargin"
+                        android:text="@string/image_help3"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+
+                        android:text="@string/options"
+                        android:layout_gravity="bottom"
+                        android:background="@color/colorPrimaryDark"
+                        android:textColor="#e3e3e3"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

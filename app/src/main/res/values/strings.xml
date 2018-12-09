@@ -114,30 +114,78 @@
     <string name="quiz_type">Quiz Type</string>
     <string name="quiz_ready">Question Ready</string>
     <string name="quiz_not_ready">Need to edit this question</string>
-    <string name="no_queestions">No questions added</string>
+    <string name="no_questions">No questions added</string>
     <string name="question_added">Question added</string>
     <string name="question_to_answer">Question to answer</string>
     <string name="options">Options</string>
     <string name="correct_answer">Correct answer</string>
+
     <string name="dragdrop_help1">This will be shown at the top of the screen and will provide instructions to the student about what to do.</string>
     <string name="dragdrop_help2">These will be the elements that the student will have to order. Write each word or number separated by an only space and then press the button just below to confirm the values. This will disable for now the writing in this field.</string>
     <string name="dragdrop_help3">In this section you have to drag the elements of the second box in the correct order to the first box. Hold an element for a little bit to drag it. There\'s no need to take all the elements from the second box, you can leave someones out of the correct answer.
     To restart the values to drag, you can press the button at the right side of the save button, that will clean the options panel and will let you write again.</string>
-    <string name="quiz_saved">Quiz saved</string>
-    <string name="answer">Answer</string>
+
     <string name="picker_help2">Here you have to write the correct numeric answer to the question. TThe answer can be from dates to negative numbers. After writing it you must press the button just below to confirm the value and finish editing the question. This will disable for now the writing in this field.</string>
     <string name="picker_help3">This area will show the previous view of what the students will see and the interaction that they can have. It is only indicative, to change the value here won´t change the correct answer. If you want to write another value you should press the button next to the save button to get enable again the writing.</string>
+
+    <string name="dragname_help2">Here you have to select 3 pictures of your gallery. Press on one of the three boxes to access your device images. When you have selected one and want to remove it, just press again on it and it will remove.</string>
+    <string name="dragname_help3">This area have the word or words that give meaning to the images you want to upload. The student will have to drag this words to the images uploaded, so try to be the most specific you can.</string>
+
+    <string name="completecard_help1">This is the correct answer to the quiz, so the student have to write this when see the image. As a clue to this quizzes them always show the first letter of the word or sentence. This field doesn\'t admit any coma character.</string>
+    <string name="completecard_help2">This is the image you will provide to the student to respond the quiz correctly. It will appear in the upside of the game screen.</string>
+
+
+
+    <string name="quiz_saved">Quiz saved</string>
+    <string name="answer">Answer</string>
+
     <string name="images">Images</string>
     <string name="image_1">Image 1</string>
     <string name="image_2">Image 2</string>
     <string name="image_3">Image 3</string>
+    <string name="image_4">Image 4</string>
+    <string name="image_5">Image 5</string>
+    <string name="image_6">Image 6</string>
     <string name="answers">Answers</string>
+
+    <string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
+    <string name="option_3">Option 3</string>
+
     <string name="select_application">Select the application</string>
     <string name="image_error">Could not load the image</string>
-    <string name="need_3_images_error">You need to add 3 images to save the question</string>
+    <string name="need_3_images_error">You need to add all the images to save the question</string>
+    <string name="need_6_images_error">You need to add 6 images to save the question</string>
     <string name="get_permises">This app needs access to your file storage so that it can read photos.</string>
     <string name="get_permises_failed">Permission has been denied</string>
-    <string name="dragname_help2">Here you have to select 3 pictures of your gallery. Press on one of the three boxes to access your device images. When you have selected one and want to remove it, just press again on it and it will remove.</string>
-    <string name="dragname_help3">This area have the word or words that give meaning to the images you want to upload. The student will have to drag this words to the images uploaded, so try to be the most specific you can.</string>
+
+    <string name="image">Image</string>
+    <string name="invalid_coma_character">The "," character is not valid.</string>
+
+    <string name="left_text">Left text</string>
+    <string name="right_text">Right text</string>
+    <string name="true_value">True</string>
+    <string name="false_value">False</string>
+    <string name="truefalse_value">True,False</string>
+
+    <string name="sound_edit">Sound</string>
+    <string name="sound_recording">Recording...</string>
+
+    <string name="dragimage_help2">Here you have to pick 6 images from your library and then write a little description about the image itself. They will appear in the screen and the student will have to select the ones who belong to the correct answer. It is necessary to pick all of them, and the character \',\' and \';\' are invalid here.</string>
+    <string name="dragimage_help3">To select the correct answer, or in this case, the correct images that belong to the answer, you have to press the box right at the side of the description of the image. The ones clicked will be the images that the student will have to drag on to the answer box.</string>
+
+    <string name="checkbox_help2">Here you have to write all the posible options that will be on the checkbox, separated with an only space. The \',\' and \';\' character are not valid here. When you are done, press the button just below, the Validation button, to continue the edition of this quiz. That will disable this area until you press the Reset button.</string>
+    <string name="checkbox_help3">Ones you pressed the validation button, the checkbox with all the options will appear in this area, so you have to select the correct options, just like the student would. Then press the save button to save changes or the button at it side, the reset button, to enable again the options area and write again the options.</string>
+
+    <string name="sound_help2">The green play button will reproduce the sound saved here if it exist, if there is no sound it will be disabled, and the Rec button will let you record with the microphone of your device a new sound file to upload to the application. When you start recording, the other areas will be disabled and it will appear where the Rec button was a Stop button to end the recording.</string>
+    <string name="sound_help3">In the Answer and Options area you have to write the four options that the student will have in screen, an the one in the answer area have to be the correct.</string>
+
+    <string name="image_help2">Here you have to upload the correct image with the correct description of it. The description will not help the student while playing, but it will show on the corrections.</string>
+    <string name="image_help3">The other options have to be filled too, so you have to take other three images of your gallery with their respective descriptions.</string>
+
+    <string name="spinner_help2">There are 3 areas to write, the left and right ones are the text that will show on the sides of the options to select, and they can be empty. The one in the center is to write the posible options, separated with an only space. The \',\' and \';\' characters are not valid. When all is ready, press the Validation button to continue the edition, the button just below the options area.</string>
+    <string name="spinner_help3">This area will show the structure of the final question, with the right and left texts and the options in the middle. Select like a student would do the correct answer and press the Save button or press the Reset button to write the options again.</string>
+
+    <string name="select_help2">To change the correct answer just press the button with the True or False text and it will change to the other value.</string>
 
 </resources>

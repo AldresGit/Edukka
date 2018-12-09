@@ -11,10 +11,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.javier.edukka.R;
-import com.javier.edukka.editor.DragNameActivity;
-import com.javier.edukka.editor.PickerActivity;
+import com.javier.edukka.editor.CheckboxEditorActivity;
+import com.javier.edukka.editor.CompleteEditorActivity;
+import com.javier.edukka.editor.DragImageEditorActivity;
+import com.javier.edukka.editor.DragNameEditorActivity;
+import com.javier.edukka.editor.ImageEditorActivity;
+import com.javier.edukka.editor.PickerEditorActivity;
+import com.javier.edukka.editor.SelectEditorActivity;
+import com.javier.edukka.editor.SoundEditorActivity;
+import com.javier.edukka.editor.SpinnerEditorActivity;
 import com.javier.edukka.model.QuizModel;
-import com.javier.edukka.editor.DragDropActivity;
+import com.javier.edukka.editor.DragDropEditorActivity;
 
 import java.util.ArrayList;
 
@@ -64,6 +71,9 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
             case "spinner":
                 holder.quiz_question.setText(mArrayList.get(i).getQuestion());
                 break;
+            case "select":
+                holder.quiz_question.setText(mArrayList.get(i).getQuestion());
+                break;
         }
         if(mArrayList.get(i).getEdited().equals("yes")) {
             holder.quiz_edited.setText(R.string.quiz_ready);
@@ -101,42 +111,63 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
 
                     switch(s){
                         case "dragdrop":
-                            intent = new Intent(context, DragDropActivity.class);
+                            intent = new Intent(context, DragDropEditorActivity.class);
                             intent.putExtra(EXTRA_POSITION, id);
                             context.startActivity(intent);
                             break;
 
                         case "picker":
-                            intent = new Intent(context, PickerActivity.class);
+                            intent = new Intent(context, PickerEditorActivity.class);
                             intent.putExtra(EXTRA_POSITION, id);
                             context.startActivity(intent);
                             break;
 
                         case "dragname":
-                            intent = new Intent(context, DragNameActivity.class);
+                            intent = new Intent(context, DragNameEditorActivity.class);
                             intent.putExtra(EXTRA_POSITION, id);
                             context.startActivity(intent);
                             break;
 
                         case "dragimage":
+                            intent = new Intent(context, DragImageEditorActivity.class);
+                            intent.putExtra(EXTRA_POSITION, id);
+                            context.startActivity(intent);
                             break;
 
                         case "checkbox":
+                            intent = new Intent(context, CheckboxEditorActivity.class);
+                            intent.putExtra(EXTRA_POSITION, id);
+                            context.startActivity(intent);
                             break;
 
                         case "complete":
+                            intent = new Intent(context, CompleteEditorActivity.class);
+                            intent.putExtra(EXTRA_POSITION, id);
+                            context.startActivity(intent);
                             break;
 
                         case "sound":
+                            intent = new Intent(context, SoundEditorActivity.class);
+                            intent.putExtra(EXTRA_POSITION, id);
+                            context.startActivity(intent);
                             break;
 
                         case "image":
+                            intent = new Intent(context, ImageEditorActivity.class);
+                            intent.putExtra(EXTRA_POSITION, id);
+                            context.startActivity(intent);
                             break;
 
                         case "spinner":
+                            intent = new Intent(context, SpinnerEditorActivity.class);
+                            intent.putExtra(EXTRA_POSITION, id);
+                            context.startActivity(intent);
                             break;
 
                         case "select":
+                            intent = new Intent(context, SelectEditorActivity.class);
+                            intent.putExtra(EXTRA_POSITION, id);
+                            context.startActivity(intent);
                             break;
 
                     }

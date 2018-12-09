@@ -152,4 +152,7 @@ public interface RestInterface {
     @POST("/edukka/images/index.php")
     Call<UploadObject> postImage(@Part MultipartBody.Part image, @Part("name") RequestBody name);
 
+    @Multipart
+    @POST("/edukka/sounds/index.php")
+    Call<UploadObject> postSound(@Part MultipartBody.Part sound, @Part("name") RequestBody name);
 }

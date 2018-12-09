@@ -124,6 +124,7 @@
                     android:layout_marginLeft="@dimen/default_padding_bottom"
                     android:layout_marginTop="100dp"
                     android:layout_marginRight="@dimen/default_padding_bottom"
+                    android:layout_marginBottom="@dimen/md_keylines_x9"
                     android:background="@color/colorPrimary"
                     android:backgroundTint="@color/colorPrimaryDark"
                     android:backgroundTintMode="src_in"
@@ -224,6 +225,7 @@
                             android:id="@+id/card_recycler_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/md_keylines_x9"
                             android:scrollbars="vertical" >
                         </android.support.v7.widget.RecyclerView>
 
@@ -246,7 +248,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/image_margin"
                         android:gravity="center"
-                        android:text="@string/no_queestions"
+                        android:text="@string/no_questions"
                         android:visibility="invisible" />
 
                 </RelativeLayout>

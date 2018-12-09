@@ -261,6 +261,8 @@ public class GameModifyActivity extends AppCompatActivity {
                 break;
             case "Select":
                 type = "select";
+                answer = getString(R.string.true_value);
+                options = getString(R.string.truefalse_value);
                 break;
         }
 

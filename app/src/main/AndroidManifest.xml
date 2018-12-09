@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -133,27 +134,71 @@
                 android:value=".view.SearchActivity" />
         </activity>
         <activity
-            android:name=".editor.DragDropActivity"
+            android:name=".editor.DragDropEditorActivity"
             android:parentActivityName=".view.GameModifyActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.GameModifyActivity" />
         </activity>
         <activity
-            android:name=".editor.PickerActivity"
+            android:name=".editor.PickerEditorActivity"
             android:parentActivityName=".view.GameModifyActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.GameModifyActivity" />
         </activity>
         <activity
-            android:name=".editor.DragNameActivity"
+            android:name=".editor.DragNameEditorActivity"
             android:parentActivityName=".view.GameModifyActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.GameModifyActivity" />
         </activity>
-        <activity android:name=".editor.CheckboxActivity"></activity>
+        <activity
+            android:name=".editor.CheckboxEditorActivity"
+            android:parentActivityName=".view.GameModifyActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.GameModifyActivity" />
+        </activity>
+        <activity
+            android:name=".editor.CompleteEditorActivity"
+            android:parentActivityName=".view.GameModifyActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.GameModifyActivity" />
+        </activity>
+        <activity
+            android:name=".editor.DragImageEditorActivity"
+            android:parentActivityName=".view.GameModifyActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.GameModifyActivity" />
+        </activity>
+        <activity
+            android:name=".editor.ImageEditorActivity"
+            android:parentActivityName=".view.GameModifyActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.GameModifyActivity" />
+        </activity>
+        <activity
+            android:name=".editor.SpinnerEditorActivity"
+            android:parentActivityName=".view.GameModifyActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.GameModifyActivity" />
+        </activity>
+        <activity
+            android:name=".editor.SelectEditorActivity"
+            android:parentActivityName=".view.GameModifyActivity"></activity>
+        <activity
+            android:name=".editor.SoundEditorActivity"
+            android:parentActivityName=".view.GameModifyActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.GameModifyActivity" />
+        </activity>
     </application>
 
 </manifest>
