@@ -11,39 +11,75 @@
     android:foreground="?android:attr/selectableItemBackground"
     card_view:cardCornerRadius="@dimen/md_keylines_x2" >
 
+    <TextView
+        android:id="@+id/quiz_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="@string/question_to_answer"
+        android:background="@color/colorBioGeo"
+        android:textColor="#e3e3e3"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/md_keylines_x2"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/quiz_type"
-            android:textSize="@dimen/article_heading"
+        <ImageView
+            android:id="@+id/icon_quiz"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimaryText"
-            tools:text="@string/quiz_type"/>
+            android:padding="8dp"
+            android:layout_marginTop="@dimen/md_keylines_x4"
+            android:layout_marginEnd="@dimen/md_keylines_x4"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="TODO"
+            android:src="@drawable/reset_icon_black"
+            android:tint="@color/colorPrimary" />
 
-        <TextView
-            android:id="@+id/quiz_question"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:textColor="@color/colorSecondaryText"
-            tools:text="@string/lorem_ipsum"/>
+            android:layout_marginTop="@dimen/md_keylines_x8"
+            android:layout_marginLeft="@dimen/md_keylines_x2"
+            android:layout_marginRight="@dimen/md_keylines_x2"
+            android:layout_marginBottom="@dimen/md_keylines"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/quiz_question"
+                android:textSize="@dimen/article_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryText"
+                tools:text="@string/quiz_type"/>
+
+            <TextView
+                android:id="@+id/quiz_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/colorSecondaryText"
+                tools:text="@string/lorem_ipsum"/>
 
 
-        <TextView
-            android:id="@+id/quiz_edited"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:textColor="@color/colorAccent"
-            tools:text="Edited"/>
+            <TextView
+                android:id="@+id/quiz_edited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textColor="@color/colorAccent"
+                tools:text="Edited"/>
+        </LinearLayout>
+
 
 
     </LinearLayout>
+
 </android.support.v7.widget.CardView>

@@ -1,9 +1,11 @@
 package com.javier.edukka.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,10 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.javier.edukka.R;
@@ -38,6 +43,7 @@ import retrofit2.Response;
 public class GameModifyActivity extends AppCompatActivity {
     private EditText title, description, timeLimit;
     private MaterialBetterSpinner difficulty, questionType;
+    private Switch visibility;
     private ArrayList<QuizModel> mArrayList;
     private String SUBJECT_NAME = "subject";
     private String EXTRA_POSITION = "position";
@@ -74,6 +80,8 @@ public class GameModifyActivity extends AppCompatActivity {
         String[] difficulties = getResources().getStringArray(R.array.level);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, difficulties);
         difficulty.setAdapter(arrayAdapter);
+
+        visibility = (Switch) findViewById(R.id.visibility_switch);
 
         questionType = (MaterialBetterSpinner) findViewById(R.id.question_type);
         String[] question_types = getResources().getStringArray(R.array.question_type);
@@ -145,6 +153,11 @@ public class GameModifyActivity extends AppCompatActivity {
                 } else {
                     difficulty.setText(response.body().getDifficulty());
                 }
+                if(response.body().getVisibility().equals("yes")) {
+                    visibility.setChecked(true);
+                } else {
+                    visibility.setChecked(false);
+                }
             }
             @Override
             public void onFailure(Call<GameModel> call, Throwable t) {
@@ -170,10 +183,20 @@ public class GameModifyActivity extends AppCompatActivity {
                     findViewById(R.id.empty_text).setVisibility(View.VISIBLE);
                 } else {
                     ArrayList<QuizModel> quizList = new ArrayList<>();
+                    boolean visibility_change = true;
                     for(QuizModel quiz : jsonResponse2) {
                         quizList.add(quiz);
+                        if(visibility_change) {
+                            visibility_change = quiz.getEdited().equals("yes");
+                        }
                     }
                     mArrayList = quizList;
+                    if(!visibility_change) {
+                        visibility.setEnabled(false);
+                        visibility.setChecked(false);
+                    } else {
+                        visibility.setEnabled(true);
+                    }
 
                     if (mArrayList.isEmpty()) {
                         findViewById(R.id.empty_view).setVisibility(View.VISIBLE);
@@ -199,21 +222,19 @@ public class GameModifyActivity extends AppCompatActivity {
 
     public void save(View v) {
         if(checkFieldValidation()) {
+            String visibility_value = "no";
+            if(visibility.isChecked()) {
+                visibility_value = "yes";
+            }
             RestInterface restInterface = RetrofitClient.getInstance();
             final Call<GameModel> request;
             String level = HelperClient.levelCode(difficulty.getText().toString());
             request = restInterface.updateGame(title.getText().toString(), description.getText().toString(), level,
-                    timeLimit.getText().toString(), "yes", String.valueOf(position));                         //-------------Canmbiar visibilidad------------------//
+                    timeLimit.getText().toString(), visibility_value, String.valueOf(position));                         //-------------Canmbiar visibilidad------------------//
             request.enqueue(new Callback<GameModel>() {
                 @Override
                 public void onResponse(Call<GameModel> call, Response<GameModel> response) {
                     Toast.makeText(GameModifyActivity.this, R.string.modified_game, Toast.LENGTH_SHORT).show();
-                    //GameSingleton.getInstance().setGameModel(response.body());
-                    //Intent i = new Intent(GameModifyActivity.this, GameModifyActivity.class);
-                    //i.putExtra(EXTRA_POSITION, Integer.parseInt(response.body().getId()));
-                    //i.putExtra(SUBJECT_NAME, response.body().getSubject());
-                    //finish();
-                    //startActivity(i);
                     loadJSON();
                 }
 
@@ -283,6 +304,52 @@ public class GameModifyActivity extends AppCompatActivity {
         });
     }
 
+    private void deleteGame() {
+        int id = getIntent().getIntExtra(EXTRA_POSITION, 0);
+        RestInterface restInterface = RetrofitClient.getInstance();
+        Call<Void> deleteRequest = restInterface.deleteGame(id);
+        deleteRequest.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Intent i = new Intent(GameModifyActivity.this, MainActivity.class);
+                finish();
+                Toast.makeText(GameModifyActivity.this, R.string.deletegame_success, Toast.LENGTH_SHORT).show();
+                startActivity(i);
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d("Error",t.getMessage());
+            }
+        });
+    }
+
+    private void infoDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle(R.string.deletegame);
+        builder.setIcon(android.R.drawable.ic_delete);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                setContentView(R.layout.progressbar_layout);
+                deleteGame();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+
+        View dialogView = getLayoutInflater().inflate(android.R.layout.simple_list_item_1, null);
+        TextView textView1 = (TextView) dialogView.findViewById(android.R.id.text1);
+        textView1.setText(R.string.dialoggame);
+        builder.setView(dialogView);
+        builder.show();
+    }
+
     private void refresh() {
         mySwipeRefreshLayout.setOnRefreshListener(
                 new SwipeRefreshLayout.OnRefreshListener() {
@@ -295,9 +362,21 @@ public class GameModifyActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        finish();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_edit, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.delete:
+                infoDialog();
+                return true;
+            default:
+                finish();
+                return true;
+        }
     }
 
     @Override

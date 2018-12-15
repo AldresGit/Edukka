@@ -1,10 +1,12 @@
 package com.javier.edukka.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,6 +42,8 @@ public class SearchActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private GameAdapter mAdapter;
 
+    private int classId = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,20 +59,25 @@ public class SearchActivity extends AppCompatActivity {
         mySwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         getSupportActionBar().setTitle(getIntent().getStringExtra(SUBJECT_NAME));
 
+        loadJSON();
+
         //--------------Lineas nuevas-----------------
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SearchActivity.this, GameCreateActivity.class);
-                intent.putExtra(SUBJECT_NAME, getIntent().getStringExtra(SUBJECT_NAME));
-                intent.putExtra("id", 0);
-                startActivity(intent);
+                if(classId == 1) {
+                    infoDialog1();
+                } else {
+                    Intent intent = new Intent(SearchActivity.this, GameCreateActivity.class);
+                    intent.putExtra(SUBJECT_NAME, getIntent().getStringExtra(SUBJECT_NAME));
+                    intent.putExtra("id", 0);
+                    startActivity(intent);
+                }
             }
         });
         //--------------Lineas nuevas-----------------
 
-        loadJSON();
         refresh();
 
     }
@@ -84,11 +93,12 @@ public class SearchActivity extends AppCompatActivity {
             search = HelperClient.subjectTranslateEn(search);
         }
 
-        //--------------Lineas nuevas-----------------
+
         if(UserSingleton.getInstance().getUserModel().getRole().equals("teacher")) {
             findViewById(R.id.fab).setVisibility(View.VISIBLE);
+            classId = Integer.parseInt(UserSingleton.getInstance().getUserModel().getClassId());
         }
-        //--------------Lineas nuevas-----------------
+
 
         RestInterface restInterface = RetrofitClient.getInstance();
         Call<List<GameModel>> call = restInterface.getSubjectGames(search);
@@ -103,7 +113,7 @@ public class SearchActivity extends AppCompatActivity {
                 } else {
                     ArrayList<GameModel> list = new ArrayList<>();
                     for (GameModel game : jsonResponse) {
-                        if (game.getLocale().equals(Locale.getDefault().getLanguage())) {
+                        if (game.getLocale().equals(Locale.getDefault().getLanguage()) && game.getClassId().equals(UserSingleton.getInstance().getUserModel().getClassId())) {
                             list.add(game);                                                 //Modificar para solo agregar con el id de la clase
                         }
                     }
@@ -128,6 +138,21 @@ public class SearchActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void infoDialog1() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle(R.string.action_not_available);
+        builder.setMessage(R.string.must_create_class);
+        builder.setIconAttribute(android.R.attr.alertDialogIcon);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
     }
 
     @Override

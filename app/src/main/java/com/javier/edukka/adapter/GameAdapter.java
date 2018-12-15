@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.javier.edukka.R;
 import com.javier.edukka.controller.UserSingleton;
@@ -114,10 +115,14 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> im
                     Context context = v.getContext();
 
                     if(UserSingleton.getInstance().getUserModel().getRole().equals("teacher")) {
-                        Intent intent = new Intent(context, GameModifyActivity.class);
-                        intent.putExtra(GameActivity.EXTRA_POSITION, i);
-                        intent.putExtra(GameActivity.EXTRA_SUBJECT, s);
-                        context.startActivity(intent);
+                        if(UserSingleton.getInstance().getUserModel().getClassId().equals("1")) {
+                            Toast.makeText(context, R.string.edit_base_game_error, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Intent intent = new Intent(context, GameModifyActivity.class);
+                            intent.putExtra(GameActivity.EXTRA_POSITION, i);
+                            intent.putExtra(GameActivity.EXTRA_SUBJECT, s);
+                            context.startActivity(intent);
+                        }
                     } else {
                         Intent intent = new Intent(context, GameActivity.class);
                         intent.putExtra(GameActivity.EXTRA_POSITION, i);

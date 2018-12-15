@@ -27,6 +27,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/play_bottom"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -43,7 +44,53 @@
                 android:layout_height="match_parent"/>
 
         </RelativeLayout>
+
+
     </android.support.v4.widget.NestedScrollView>
+
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <io.netopen.hotbitmapgg.library.view.RingProgressBar
+            android:id="@+id/ring_progress_bar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="68dp"
+            android:layout_marginRight="@dimen/md_keylines_x6"
+            app:max="100"
+            app:ringColor="@color/colorStar"
+            app:ringProgressColor="@color/colorStar"
+            app:ringWidth="3dp"
+            app:style="FILL"
+            app:textColor="@color/colorPrimaryDark"
+            app:textIsShow="true"
+            app:textSize="16sp"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/progress_toolbar"
@@ -103,6 +150,7 @@
                     style="?android:attr/ratingBarStyleIndicator"/>
 
             </LinearLayout>
+
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
 

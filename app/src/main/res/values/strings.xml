@@ -56,10 +56,12 @@
     <string name="deleteuser">Delete User</string>
     <string name="deleteclass">Delete Class</string>
     <string name="deletegame">Delete Game</string>
+    <string name="deletequiz">Delete Quiz</string>
 
     <string name="dialoguser">This action will erase your user from the database, are you sure?</string>
     <string name="dialogclass">This action will erase your class from the database, are you sure?</string>
     <string name="dialoggame">This action will erase your game from the database, are you sure?</string>
+    <string name="dialogquiz">This action will erase your quiz from the database, are you sure?</string>
 
     <string name="completed">Completed Games</string>
     <string name="approved">Approved Games</string>
@@ -80,6 +82,7 @@
     <string name="deleteclass_success">Class deleted successfully</string>
     <string name="deleteuser_success">User deleted successfully</string>
     <string name="deletegame_success">Game deleted successfully</string>
+    <string name="deletequiz_success">Quiz deleted successfully</string>
 
     <string name="user_score">%1$s points</string>
     <string name="class_size">%1$d users</string>
@@ -108,7 +111,7 @@
     <string name="game_created">Game successfully created</string>
     <string name="modifying_game">Editing a game of </string>
     <string name="modified_game">Game successfully edited</string>
-    <string name="add_question">Add a question of type</string>
+    <string name="add_question">Add question </string>
     <string name="add">Add</string>
     <string name="time_limit_hint">60</string>
     <string name="quiz_type">Quiz Type</string>
@@ -119,22 +122,6 @@
     <string name="question_to_answer">Question to answer</string>
     <string name="options">Options</string>
     <string name="correct_answer">Correct answer</string>
-
-    <string name="dragdrop_help1">This will be shown at the top of the screen and will provide instructions to the student about what to do.</string>
-    <string name="dragdrop_help2">These will be the elements that the student will have to order. Write each word or number separated by an only space and then press the button just below to confirm the values. This will disable for now the writing in this field.</string>
-    <string name="dragdrop_help3">In this section you have to drag the elements of the second box in the correct order to the first box. Hold an element for a little bit to drag it. There\'s no need to take all the elements from the second box, you can leave someones out of the correct answer.
-    To restart the values to drag, you can press the button at the right side of the save button, that will clean the options panel and will let you write again.</string>
-
-    <string name="picker_help2">Here you have to write the correct numeric answer to the question. TThe answer can be from dates to negative numbers. After writing it you must press the button just below to confirm the value and finish editing the question. This will disable for now the writing in this field.</string>
-    <string name="picker_help3">This area will show the previous view of what the students will see and the interaction that they can have. It is only indicative, to change the value here won´t change the correct answer. If you want to write another value you should press the button next to the save button to get enable again the writing.</string>
-
-    <string name="dragname_help2">Here you have to select 3 pictures of your gallery. Press on one of the three boxes to access your device images. When you have selected one and want to remove it, just press again on it and it will remove.</string>
-    <string name="dragname_help3">This area have the word or words that give meaning to the images you want to upload. The student will have to drag this words to the images uploaded, so try to be the most specific you can.</string>
-
-    <string name="completecard_help1">This is the correct answer to the quiz, so the student have to write this when see the image. As a clue to this quizzes them always show the first letter of the word or sentence. This field doesn\'t admit any coma character.</string>
-    <string name="completecard_help2">This is the image you will provide to the student to respond the quiz correctly. It will appear in the upside of the game screen.</string>
-
-
 
     <string name="quiz_saved">Quiz saved</string>
     <string name="answer">Answer</string>
@@ -147,6 +134,7 @@
     <string name="image_5">Image 5</string>
     <string name="image_6">Image 6</string>
     <string name="answers">Answers</string>
+    <string name="visibility">Visibility</string>
 
     <string name="option_1">Option 1</string>
     <string name="option_2">Option 2</string>
@@ -171,6 +159,20 @@
     <string name="sound_edit">Sound</string>
     <string name="sound_recording">Recording...</string>
 
+    <string name="dragdrop_help1">This will be shown at the top of the screen and will provide instructions to the student about what to do.</string>
+    <string name="dragdrop_help2">These will be the elements that the student will have to order. Write each word or number separated by an only space and then press the button just below to confirm the values. This will disable for now the writing in this field.</string>
+    <string name="dragdrop_help3">In this section you have to drag the elements of the second box in the correct order to the first box. Hold an element for a little bit to drag it. There\'s no need to take all the elements from the second box, you can leave someones out of the correct answer.
+    To restart the values to drag, you can press the button at the right side of the save button, that will clean the options panel and will let you write again.</string>
+
+    <string name="picker_help2">Here you have to write the correct numeric answer to the question. TThe answer can be from dates to negative numbers. After writing it you must press the button just below to confirm the value and finish editing the question. This will disable for now the writing in this field.</string>
+    <string name="picker_help3">This area will show the previous view of what the students will see and the interaction that they can have. It is only indicative, to change the value here won´t change the correct answer. If you want to write another value you should press the button next to the save button to get enable again the writing.</string>
+
+    <string name="dragname_help2">Here you have to select 3 pictures of your gallery. Press on one of the three boxes to access your device images. When you have selected one and want to remove it, just press again on it and it will remove.</string>
+    <string name="dragname_help3">This area have the word or words that give meaning to the images you want to upload. The student will have to drag this words to the images uploaded, so try to be the most specific you can.</string>
+
+    <string name="completecard_help1">This is the correct answer to the quiz, so the student have to write this when see the image. As a clue to this quizzes them always show the first letter of the word or sentence. This field doesn\'t admit any coma character.</string>
+    <string name="completecard_help2">This is the image you will provide to the student to respond the quiz correctly. It will appear in the upside of the game screen.</string>
+
     <string name="dragimage_help2">Here you have to pick 6 images from your library and then write a little description about the image itself. They will appear in the screen and the student will have to select the ones who belong to the correct answer. It is necessary to pick all of them, and the character \',\' and \';\' are invalid here.</string>
     <string name="dragimage_help3">To select the correct answer, or in this case, the correct images that belong to the answer, you have to press the box right at the side of the description of the image. The ones clicked will be the images that the student will have to drag on to the answer box.</string>
 
@@ -187,5 +189,10 @@
     <string name="spinner_help3">This area will show the structure of the final question, with the right and left texts and the options in the middle. Select like a student would do the correct answer and press the Save button or press the Reset button to write the options again.</string>
 
     <string name="select_help2">To change the correct answer just press the button with the True or False text and it will change to the other value.</string>
+    <string name="action_not_available">Action not available</string>
+    <string name="must_create_class">You must create a class first, where the students will play the game.</string>
+    <string name="must_create_game">Must create the game first to access this area.</string>
+    <string name="edit_base_game_error">You can´t edit the base games.</string>
+
 
 </resources>

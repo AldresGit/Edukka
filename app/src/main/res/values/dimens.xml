@@ -56,4 +56,6 @@
     <dimen name="edit_saveButton">320dp</dimen>
     <dimen name="helpcard_elevation">10dp</dimen>
     <dimen name="helptext_bottomMargin">40dp</dimen>
+
+    <dimen name="game_modify_leftside_width">40dp</dimen>
 </resources>

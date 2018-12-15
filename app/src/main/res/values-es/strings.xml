@@ -56,10 +56,12 @@
     <string name="deleteuser">Borrar Usuario</string>
     <string name="deleteclass">Borrar Clase</string>
     <string name="deletegame">Borrar Juego</string>
+    <string name="deletequiz">Borrar Pregunta</string>
 
     <string name="dialoguser">Esta acción borrará tu usuario de la base de datos, ¿estás seguro?</string>
     <string name="dialogclass">Esta acción borrará tu clase de la base de datos, ¿estás seguro?</string>
     <string name="dialoggame">Esta acción borrará tu juego de la base de datos, ¿estás seguro?</string>
+    <string name="dialogquiz">Esta acción borrará tu pregunta de la base de datos, ¿estás seguro?</string>
 
     <string name="completed">Juegos Completados</string>
     <string name="approved">Juegos Aprobados</string>
@@ -80,6 +82,7 @@
     <string name="deleteclass_success">Clase eliminada con éxito</string>
     <string name="deleteuser_success">Usuario eliminado con éxito</string>
     <string name="deletegame_success">Juego eliminado con éxito</string>
+    <string name="deletequiz_success">Pregunta eliminada con éxito</string>
 
     <string name="user_score">%1$s puntos</string>
     <string name="class_size">%1$d usuarios</string>
@@ -108,7 +111,7 @@
     <string name="game_created">Juego creado con éxito</string>
     <string name="modifying_game">"Editando un juego de "</string>
     <string name="modified_game">Juego editado con éxito</string>
-    <string name="add_question">Añadir una pregunta de tipo</string>
+    <string name="add_question">Añadir pregunta </string>
     <string name="add">Añadir</string>
     <string name="time_limit_hint">60</string>
     <string name="quiz_type">Quiz Type</string>
@@ -119,22 +122,7 @@
     <string name="question_to_answer">Pregunta a responder</string>
     <string name="options">Opciones</string>
     <string name="correct_answer">Respuesta correcta</string>
-
-    <string name="dragdrop_help1">Esto se mostrará en la parte superior de la pantalla, dando instrucciones al alumno sobre qué hacer.</string>
-    <string name="dragdrop_help2">Estos serán los elementos que el alumno tendrá que ordenar. Escriba cada palabra o número separado por un espacio y luego pulse el botón justo debajo para confirmar los valores. Esto inhabilitara de momento la escritura en este campo.</string>
-    <string name="dragdrop_help3">En esta sección debe arrastrar los elementos de la segunda caja hacia la primera. Mantenga un elemento seleccionado por un breve instante para agarrarlo. No es necesario coger todos los elementos de la segunda caja, se pueden dejar algunos o todos fuera de la respuesta correcta.
-    Para reiniciar los valores a arrastrar, se puede presionar el botón del lado derecho del botón de guardar, que vaciará el panel de opciones y le permitirá escribirlos de nuevo.</string>
-
-    <string name="picker_help2">Aquí se debe escribir la respuesta numérica correcta a la pregunta. Pueden ser desde fechas hasta numeros negativos. Después de escribirla se debe pulsar el botón justo debajo para confirmar el valor y terminar de editar la pregunta. Esto inhabilitara de momento la escritura en este campo.</string>
-    <string name="picker_help3">En esta zona se muestra la vista previa de lo que verán los alumnos y la interacción que puede haber. Es solo orientativo, cambiar el valor aquí no cambia la respuesta. Si quiere volver a escribir otro valor debe pulsar el botón justo al lado del botón guardar para habilitar de nuevo la escritura.</string>
-
-    <string name="dragname_help2">Aqui debes seleccionar 3 imágenes de tu galeria. Pulsa en alguno de los recuadros para acceder a las imágenes de tu dispositivo. Cuando hayas seleccionado una imagen y quieras borrarla simplemente pulsa de nueevo en ella y se removerá.</string>
-    <string name="dragname_help3">En este área debes escribir la palabra o palabras relacionadas a la imagen subida anteriormente. Esto será lo que el alumno tenga que arrastrar hacia la imagen subida, por lo que intente ser lo más específico posible.</string>
-
-    <string name="completecard_help1">Esta es la respuesta correcta a la pregunta, es decir, el alumno debe escribir esto al ver la imagen. Como pista a estas preguntas siempre se mostrara la primera letra de la palabra o frase. Este campo no admite ninguna coma en él.</string>
-    <string name="completecard_help2">Esta es la imagen que dejaras a modo de pista para que el alumno responda correctamente. Aparecerá en la parte superior de la pantalla de juego.</string>
-
-
+    <string name="visibility">Visibilidad</string>
 
     <string name="quiz_saved">Pregunta guardada</string>
     <string name="answer">Respuesta</string>
@@ -171,6 +159,20 @@
     <string name="sound_edit">Sonido</string>
     <string name="sound_recording">Grabando...</string>
 
+    <string name="dragdrop_help1">Esto se mostrará en la parte superior de la pantalla, dando instrucciones al alumno sobre qué hacer.</string>
+    <string name="dragdrop_help2">Estos serán los elementos que el alumno tendrá que ordenar. Escriba cada palabra o número separado por un espacio y luego pulse el botón justo debajo para confirmar los valores. Esto inhabilitara de momento la escritura en este campo.</string>
+    <string name="dragdrop_help3">En esta sección debe arrastrar los elementos de la segunda caja hacia la primera. Mantenga un elemento seleccionado por un breve instante para agarrarlo. No es necesario coger todos los elementos de la segunda caja, se pueden dejar algunos o todos fuera de la respuesta correcta.
+    Para reiniciar los valores a arrastrar, se puede presionar el botón del lado derecho del botón de guardar, que vaciará el panel de opciones y le permitirá escribirlos de nuevo.</string>
+
+    <string name="picker_help2">Aquí se debe escribir la respuesta numérica correcta a la pregunta. Pueden ser desde fechas hasta numeros negativos. Después de escribirla se debe pulsar el botón justo debajo para confirmar el valor y terminar de editar la pregunta. Esto inhabilitara de momento la escritura en este campo.</string>
+    <string name="picker_help3">En esta zona se muestra la vista previa de lo que verán los alumnos y la interacción que puede haber. Es solo orientativo, cambiar el valor aquí no cambia la respuesta. Si quiere volver a escribir otro valor debe pulsar el botón justo al lado del botón guardar para habilitar de nuevo la escritura.</string>
+
+    <string name="dragname_help2">Aqui debes seleccionar 3 imágenes de tu galeria. Pulsa en alguno de los recuadros para acceder a las imágenes de tu dispositivo. Cuando hayas seleccionado una imagen y quieras borrarla simplemente pulsa de nueevo en ella y se removerá.</string>
+    <string name="dragname_help3">En este área debes escribir la palabra o palabras relacionadas a la imagen subida anteriormente. Esto será lo que el alumno tenga que arrastrar hacia la imagen subida, por lo que intente ser lo más específico posible.</string>
+
+    <string name="completecard_help1">Esta es la respuesta correcta a la pregunta, es decir, el alumno debe escribir esto al ver la imagen. Como pista a estas preguntas siempre se mostrara la primera letra de la palabra o frase. Este campo no admite ninguna coma en él.</string>
+    <string name="completecard_help2">Esta es la imagen que dejaras a modo de pista para que el alumno responda correctamente. Aparecerá en la parte superior de la pantalla de juego.</string>
+
     <string name="dragimage_help2">Aquí debes seleccionar 6 imágenes de la galería y darles una pequeña descripción subre lo que es la imagen en sí. Estas apareceran en la pantalla y el alumno debera selecciona aquellas que pertenezcan a la solución. Es necesario coger las 6 imágenes de la galería, y el carácter \',\' y \';\' son inválidos aquí.</string>
     <string name="dragimage_help3">Para seleccionar la respuesta correcta, o en este caso, las imágenes correctas que pertenecen a la respuesta, debes pulsar la caja justo a la derecha de la descripción de cada imagen. Aquellas que hayan sido pulsadas serán las imágenes que el alumno tendrá que arrastrarr a la caja de respuesta correcta.</string>
 
@@ -187,5 +189,10 @@
     <string name="spinner_help3">Este área mostrará la forma final de la pregunta, Con los textos de izquierda y derecha y las opciones en el medio. Selecciona la respuesta correcta como lo haría un alumno y pulsa el botón de Guardar para confirmar o pulsa el botón Reset para escribir las opciones de nuevo.</string>
 
     <string name="select_help2">Para cambiar el valor de la respuesta correcta simplemente pulsa el botón con el texto de Verdadero o Falso y este cambiará al otro valor.</string>
+    <string name="action_not_available">Acción no disponible</string>
+    <string name="must_create_class">Debes crear una clase primero, donde los alumnos podrán jugar al juego.</string>
+    <string name="must_create_game">Debes crear el juego primero para acceder a este área.</string>
+    <string name="edit_base_game_error">No puedes editar los juegos base.</string>
+
 
 </resources>

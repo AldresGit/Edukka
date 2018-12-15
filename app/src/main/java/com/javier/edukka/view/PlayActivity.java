@@ -5,6 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.NestedScrollView;
@@ -56,6 +59,7 @@ import com.javier.edukka.service.RetrofitClient;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.netopen.hotbitmapgg.library.view.RingProgressBar;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -79,6 +83,23 @@ public class PlayActivity extends AppCompatActivity {
     private boolean end = false;
     private BaseAdapter baseAdapter;
 
+    private RingProgressBar ringProgressBar;
+    private int progress = 0;
+    private int progressMax = 100;
+
+    Handler myHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            if(msg.what == 0) {
+                if(progress < progressMax) {
+                    progress++;
+                    ringProgressBar.setProgress(progress);
+                }
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +120,11 @@ public class PlayActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progress);
         avatarView = (ImageView) findViewById(R.id.avatar);
         progressText = (TextView) findViewById(R.id.progress_text);
+
+        //timerCount = (TextView) findViewById(R.id.timer_count);
+
+        ringProgressBar = (RingProgressBar) findViewById(R.id.ring_progress_bar);
+
         questions = new ArrayList<>();
         options = new ArrayList<>();
         answers = new ArrayList<>();
@@ -106,6 +132,64 @@ public class PlayActivity extends AppCompatActivity {
         results = new ArrayList<>();
         values = new ArrayList<>();
         loadJSON();
+
+
+        ringProgressBar.setOnProgressListener(new RingProgressBar.OnProgressListener() {
+            @Override
+            public void progressToComplete() {
+
+                if(end) {
+
+                } else {
+                    for(int i = step; i < baseAdapter.getCount(); i++) {
+                        results.add("false");
+                        values.add("TIMEOUT!!");
+                        step++;
+                    }
+
+                    end = true;
+
+                    flipper.setVisibility(View.INVISIBLE); //Linea Mágica
+
+
+                    RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+                    ratingBar.setRating((correct*5.0f) / questions.size());
+                    ratingBar.setVisibility(View.VISIBLE);
+                    fab.setVisibility(View.INVISIBLE);
+                    back.setVisibility(View.INVISIBLE);
+                    ringProgressBar.setVisibility(View.INVISIBLE);
+
+                    ScoreAdapter scoreAdapter = new ScoreAdapter(questions, values, results);
+                    recyclerView.setAdapter(scoreAdapter);
+
+                    finishGame();
+
+
+                    Toast.makeText(PlayActivity.this, "TIMEOUT!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for(int i = 0; i < progressMax; i++) {
+                    try {
+                        Thread.sleep(1000);
+                        myHandler.sendEmptyMessage(0);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
+
+
+
+
+
+
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +208,7 @@ public class PlayActivity extends AppCompatActivity {
                 progressText.setText((step+1) + "/" + baseAdapter.getCount());
                 if (step == baseAdapter.getCount()) {
                     end = true;
+                    progress = progressMax;
                 }
 
                 InputMethodManager inputManager  = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -136,12 +221,25 @@ public class PlayActivity extends AppCompatActivity {
 
                 //back.setVisibility(View.VISIBLE);
                 if (end) {
+                    /*
+                    if(timeRunning) {
+                        stopTimer();
+                    }
+                    */
+
+
                     flipper.setVisibility(View.INVISIBLE); //Linea Mágica
+
+
                     RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
                     ratingBar.setRating((correct*5.0f) / questions.size());
                     ratingBar.setVisibility(View.VISIBLE);
                     fab.setVisibility(View.INVISIBLE);
                     back.setVisibility(View.INVISIBLE);
+
+
+
+                    ringProgressBar.setVisibility(View.INVISIBLE);
 
                     ScoreAdapter scoreAdapter = new ScoreAdapter(questions, values, results);
                     recyclerView.setAdapter(scoreAdapter);
@@ -208,6 +306,16 @@ public class PlayActivity extends AppCompatActivity {
                 progressText.setText(1 + "/" + questions.size());
                 int resourceId = getResources().getIdentifier(UserSingleton.getInstance().getUserModel().getImage(), "drawable", getPackageName());
                 avatarView.setImageDrawable(getResources().getDrawable(resourceId));
+
+
+
+
+                ringProgressBar.setMax(Integer.parseInt(GameSingleton.getInstance().getGameModel().getTime()));
+                progressMax = Integer.parseInt(GameSingleton.getInstance().getGameModel().getTime());
+
+
+
+
                 flipper = (AdapterViewFlipper) findViewById(R.id.adapter_view);
 
                 //-------------Lineas nuevas---------------------

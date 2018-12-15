@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.javier.edukka.R;
 import com.javier.edukka.controller.GameSingleton;
+import com.javier.edukka.controller.UserSingleton;
 import com.javier.edukka.model.GameModel;
 import com.javier.edukka.service.HelperClient;
 import com.javier.edukka.service.RestInterface;
@@ -108,7 +109,7 @@ public class GameCreateActivity extends AppCompatActivity {
             String level = HelperClient.levelCode(difficulty.getText().toString());
 
             request = restInterface.createGame(subject, title.getText().toString(), description.getText().toString(),
-                     Locale.getDefault().getLanguage(), level, timeLimit.getText().toString(),"1");            //CAMBIAR EL ID DE LA CLASE
+                     Locale.getDefault().getLanguage(), level, timeLimit.getText().toString(), UserSingleton.getInstance().getUserModel().getClassId());            //CAMBIAR EL ID DE LA CLASE
 
             request.enqueue(new Callback<GameModel>(){
                  @Override

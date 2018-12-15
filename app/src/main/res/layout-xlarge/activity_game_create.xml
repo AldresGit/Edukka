@@ -124,11 +124,11 @@
                     android:layout_marginLeft="@dimen/default_padding_bottom"
                     android:layout_marginRight="@dimen/default_padding_bottom"
                     android:onClick="save"
-                    android:text="@string/save" />
+                    android:text="@string/create" />
 
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -142,8 +142,27 @@
                     android:textSize="20sp"
                     android:paddingTop="@dimen/md_keylines_x2" />
 
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/empty_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="empty_box.json"
+                    app:lottie_imageAssetsFolder="assets"
+                    app:lottie_loop="true"
+                    app:lottie_scale="2" />
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/empty_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/image_margin"
+                    android:gravity="center"
+                    android:text="@string/must_create_game"
+                    />
+
+
+            </RelativeLayout>
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
