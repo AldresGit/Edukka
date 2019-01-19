@@ -47,10 +47,13 @@ import retrofit2.Response;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.RECORD_AUDIO;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class SoundEditorActivity extends AppCompatActivity  implements MediaPlayer.OnCompletionListener, EasyPermissions.PermissionCallbacks {
     private String EXTRA_POSITION = "position";
-    private String SOUNDS_URL = "http://docs.google.com/uc?export=download&id=";
+    //private String SOUNDS_URL = "http://docs.google.com/uc?export=download&id=";
+    //private String SOUNDS_URL = "https://edukka2.herokuapp.com/sounds/";
+    private String SOUNDS_URL = "http://192.168.1.42/edukka/sounds/";
     private final int RECORD_SOUND = 10;
     private final int UPLOAD_SOUND = 12;
     private int id;
@@ -133,8 +136,9 @@ public class SoundEditorActivity extends AppCompatActivity  implements MediaPlay
                 model = response.body();
                 mediaPlayer = new MediaPlayer();
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
                 if(!model.getQuestion().equals("")) {
-                    url = SOUNDS_URL + model.getQuestion().split(",")[1];
+                    url = model.getQuestion().split(",")[1];
                     try {
                         mediaPlayer.setDataSource(url);
                         mediaPlayer.prepare();
@@ -149,7 +153,7 @@ public class SoundEditorActivity extends AppCompatActivity  implements MediaPlay
                     question.setText(model.getQuestion().split(",")[0]);
                 }
                 if(!model.getOptions().equals("")) {
-                    List<String> options = Arrays.asList(model.getOptions().split(","));
+                    List<String> options = new ArrayList<>(Arrays.asList(model.getOptions().split(",")));
                     for(int i = 0; i < options.size(); i++) {
                         if(model.getAnswer().equals(options.get(i))) {
                             options.remove(i);
@@ -200,6 +204,7 @@ public class SoundEditorActivity extends AppCompatActivity  implements MediaPlay
     }
 
     public void play(View view) {
+        mediaPlayer.setOnCompletionListener(this);
         play.setEnabled(false);
         play.setAlpha((float) 0.5);
         record.setEnabled(false);
@@ -208,7 +213,11 @@ public class SoundEditorActivity extends AppCompatActivity  implements MediaPlay
     }
 
     public void record(View view) {
-        if(EasyPermissions.hasPermissions(this, READ_EXTERNAL_STORAGE)) {
+        if(!EasyPermissions.hasPermissions(this, RECORD_AUDIO)) {
+            EasyPermissions.requestPermissions(this, getString(R.string.get_permises), RECORD_SOUND, RECORD_AUDIO);
+        } else if (!EasyPermissions.hasPermissions(this, WRITE_EXTERNAL_STORAGE)) {
+            EasyPermissions.requestPermissions(this, getString(R.string.get_permises), UPLOAD_SOUND, WRITE_EXTERNAL_STORAGE);
+        } else {
             mediaRecorder = new MediaRecorder();
             mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
             mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -219,21 +228,18 @@ public class SoundEditorActivity extends AppCompatActivity  implements MediaPlay
                 String prefix = "Game_" + model.getGameId() + "_Quiz_" + model.getId();
                 file = File.createTempFile(prefix, ".3gp", path);
             } catch (IOException e) { e.printStackTrace(); }
-
+            mediaRecorder.setOutputFile(file.getAbsolutePath());
             try {
                 mediaRecorder.prepare();
             } catch (IOException e) { e.printStackTrace(); }
-
+            mediaRecorder.start();
             record.setVisibility(View.GONE);
             stop.setVisibility(View.VISIBLE);
             play.setEnabled(false);
             play.setAlpha((float) 0.5);
             sound_label.setText(getString(R.string.sound_recording));
             sound_label.setTextColor(getResources().getColor(R.color.colorMaths));
-        } else {
-            EasyPermissions.requestPermissions(this, getString(R.string.get_permises), RECORD_SOUND, RECORD_AUDIO);
         }
-
     }
 
     public void stop(View view) {
@@ -267,8 +273,12 @@ public class SoundEditorActivity extends AppCompatActivity  implements MediaPlay
             options.add(edit_option3.getText().toString());
             Random rnd = new Random(1000);
             Collections.shuffle(options, rnd);
+            String finalOptions = "";
+            for(String s : options) {
+                finalOptions = finalOptions + s + ",";
+            }
             RestInterface restInterface = RetrofitClient.getInstance();
-            Call<QuizModel> request = restInterface.updateQuiz(answer+url, answer, options.toString().substring(2,2), id);
+            Call<QuizModel> request = restInterface.updateQuiz(answer+ "," + url, answer, finalOptions.substring(0,finalOptions.length()-1), id);
             request.enqueue(new Callback<QuizModel>() {
                 @Override
                 public void onResponse(Call<QuizModel> call, Response<QuizModel> response) {

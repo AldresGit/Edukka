@@ -1,6 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleTextAppearance="@style/expanded_app_bar"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseParallaxMultiplier="1.0"></android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/md_keylines_x3"
+                android:paddingLeft="@dimen/md_keylines_x3"
+                android:paddingEnd="@dimen/md_keylines_x3"
+                android:paddingRight="@dimen/md_keylines_x3">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:paddingTop="@dimen/md_keylines_x2"
+                    android:text="@string/gametitle"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/gameTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="20"
+                    android:hint="@string/gametitle"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/md_keylines_x2"
+                    android:text="@string/description"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/gameDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:height="@dimen/app_icon_height"
+                    android:ems="20"
+                    android:hint="@string/description"
+                    android:inputType="textMultiLine" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/md_keylines_x2"
+                    android:text="@string/difficulty"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/gameDifficulty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/level"
+                    android:paddingTop="@dimen/md_keylines_x2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/md_keylines_x2"
+                    android:text="@string/time_limit"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/gameTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/time_limit_hint"
+                    android:inputType="number" />
+
+
+
+                <TextView
+                    android:id="@+id/visibility_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/md_keylines_x2"
+                    android:text="@string/visibility"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:textAlignment="center"/>
+
+                <Switch
+                    android:id="@+id/visibility_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/md_keylines_x2"
+                    android:enabled="false"
+                    />
+
+                <Button
+                    android:id="@+id/save_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_padding_bottom"
+                    android:layout_marginTop="@dimen/md_keylines_x4"
+                    android:layout_marginRight="@dimen/default_padding_bottom"
+                    android:layout_marginBottom="@dimen/edit_marginTop"
+                    android:background="@color/colorPrimary"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:backgroundTintMode="src_in"
+                    android:onClick="save"
+                    android:text="@string/save"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/background_light" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/question_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:paddingTop="@dimen/md_keylines_x3"
+                        android:text="@string/questions"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="0dp"
+                        android:tint="@color/colorPrimary"
+                        android:layout_toRightOf="@+id/question_label"
+                        android:background="@color/cardview_shadow_end_color"
+                        android:contentDescription="@string/add_question"
+                        app:srcCompat="@drawable/baseline_help_black_24dp"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal">
+
+
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/question_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="@dimen/md_keylines_x4"
+                        android:layout_weight="1"
+                        android:entries="@array/question_type" />
+
+                    <Button
+                        android:id="@+id/add_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:background="@color/colorPrimaryDark"
+                        android:backgroundTintMode="src_in"
+                        android:onClick="createQuiz"
+                        android:textColor="@android:color/background_light"
+                        android:text="@string/add" />
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v4.widget.SwipeRefreshLayout
+                        android:id="@+id/swiperefresh"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/game_height">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/card_recycler_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/md_keylines_x9"
+                            android:scrollbars="vertical" >
+                        </android.support.v7.widget.RecyclerView>
+
+                    </android.support.v4.widget.SwipeRefreshLayout>
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/empty_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="empty_box.json"
+                        app:lottie_imageAssetsFolder="assets"
+                        app:lottie_loop="true"
+                        app:lottie_scale="2" />
+
+                    <TextView
+                        android:id="@+id/empty_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/image_margin"
+                        android:gravity="center"
+                        android:text="@string/no_questions"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>

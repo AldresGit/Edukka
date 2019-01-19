@@ -1,9 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".editor.DragDropEditorActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="@color/colorSpanish"
+            app:expandedTitleTextAppearance="@style/expanded_app_bar"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseParallaxMultiplier="1.0"></android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/md_keylines_x3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/question_to_answer"
+                    android:layout_marginStart="@dimen/edit_marginLeft"
+                    android:layout_marginEnd="@dimen/edit_marginRight"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_marginTop"
+                    android:layout_marginStart="@dimen/edit_marginLeft"
+                    android:layout_marginEnd="@dimen/edit_marginRight"
+                    android:ems="10"
+                    android:hint="@string/question_to_answer"
+                    android:inputType="text" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/options"
+                    android:layout_marginTop="@dimen/edit_marginTop"
+                    android:layout_marginStart="@dimen/edit_marginLeft"
+                    android:layout_marginEnd="@dimen/edit_marginRight"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/edit_marginLeft"
+                    android:layout_marginEnd="@dimen/edit_marginRight"
+                    android:layout_marginTop="@dimen/md_keylines_x4"
+                    android:ems="10"
+                    android:hint="@string/options"
+                    android:inputType="text" />
+
+                <ImageButton
+                    android:id="@+id/validate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/md_keylines_x2"
+                    android:background="?android:colorBackground"
+                    android:contentDescription="TODO2"
+                    android:onClick="validate"
+                    android:src="@drawable/edit_accept_btn"
+                    android:tint="@color/colorPrimary" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/correct_answer"
+                    android:layout_marginTop="@dimen/edit_marginTop"
+                    android:layout_marginStart="@dimen/edit_marginLeft"
+                    android:layout_marginEnd="@dimen/edit_marginRight"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:id="@+id/answerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/md_keylines_x9"
+                    android:layout_marginTop="@dimen/edit_marginTop"
+                    android:layout_marginStart="@dimen/edit_marginLeft"
+                    android:layout_marginEnd="@dimen/edit_marginRight"
+                    android:gravity="start"
+                    android:padding="@dimen/md_keylines"
+                    android:background="@drawable/layout_border1"
+                    android:orientation="horizontal"/>
+
+                <LinearLayout
+                    android:id="@+id/optionsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/edit_marginTop"
+                    android:layout_marginStart="@dimen/edit_marginLeft"
+                    android:layout_marginEnd="@dimen/edit_marginRight"
+                    android:layout_marginBottom="@dimen/edit_marginTop"
+                    android:padding="@dimen/md_keylines"
+                    android:background="@drawable/layout_border1"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvOptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/play_height"/>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/edit_marginTop"
+                    android:gravity="center">
+
+
+                    <Button
+                        android:id="@+id/save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:backgroundTintMode="src_in"
+                        android:onClick="save"
+                        android:text="@string/save"
+                        android:textColor="@android:color/background_light" />
+
+                    <ImageButton
+                        android:id="@+id/reload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/md_keylines_x2"
+                        android:layout_toEndOf="@+id/save"
+                        android:background="?android:colorBackground"
+                        android:contentDescription="TODO"
+                        android:onClick="reset"
+                        android:src="@drawable/reset_icon_black"
+                        android:tint="@color/colorPrimary" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

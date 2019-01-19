@@ -53,7 +53,7 @@
                     android:paddingTop="@dimen/md_keylines_x2"
                     android:text="@string/gametitle"
                     android:textAlignment="center"
-                    android:textColor="?attr/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp" />
 
                 <EditText
@@ -69,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/description"
                     android:textAlignment="center"
-                    android:textColor="?attr/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:paddingTop="@dimen/md_keylines_x2"/>
 
@@ -87,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/difficulty"
-                    android:textColor="?attr/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     android:paddingTop="@dimen/md_keylines_x2"/>
@@ -104,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/time_limit"
                     android:textAlignment="center"
-                    android:textColor="?attr/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:paddingTop="@dimen/md_keylines_x2" />
 
@@ -118,13 +118,15 @@
 
                 <Button
                     android:id="@+id/save_btn"
-                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/default_padding_bottom"
                     android:layout_marginRight="@dimen/default_padding_bottom"
                     android:onClick="save"
-                    android:text="@string/create" />
+                    android:background="@color/colorPrimary"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:text="@string/create"
+                    android:textColor="@android:color/background_light" />
 
             </LinearLayout>
 
@@ -138,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/questions"
                     android:textAlignment="center"
-                    android:textColor="?attr/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:paddingTop="@dimen/md_keylines_x2" />
 

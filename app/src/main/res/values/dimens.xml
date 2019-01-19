@@ -58,4 +58,5 @@
     <dimen name="helptext_bottomMargin">40dp</dimen>
 
     <dimen name="game_modify_leftside_width">40dp</dimen>
+    <dimen name="image_short_size">86dp</dimen>
 </resources>
