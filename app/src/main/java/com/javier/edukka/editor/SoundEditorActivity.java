@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.javier.edukka.R;
 import com.javier.edukka.model.QuizModel;
+import com.javier.edukka.service.HelperClient;
 import com.javier.edukka.service.RestInterface;
 import com.javier.edukka.service.RetrofitClient;
 import com.javier.edukka.service.UploadObject;
@@ -53,7 +54,7 @@ public class SoundEditorActivity extends AppCompatActivity  implements MediaPlay
     private String EXTRA_POSITION = "position";
     //private String SOUNDS_URL = "http://docs.google.com/uc?export=download&id=";
     //private String SOUNDS_URL = "https://edukka2.herokuapp.com/sounds/";
-    private String SOUNDS_URL = "http://192.168.1.42/edukka/sounds/";
+    private String SOUNDS_URL = "sounds/";
     private final int RECORD_SOUND = 10;
     private final int UPLOAD_SOUND = 12;
     private int id;
@@ -122,6 +123,8 @@ public class SoundEditorActivity extends AppCompatActivity  implements MediaPlay
 
         play.setEnabled(false);
         play.setAlpha((float) 0.5);
+
+        SOUNDS_URL = HelperClient.getBaseURL() + SOUNDS_URL;
 
         loadJSON();
     }

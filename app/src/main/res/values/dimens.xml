@@ -31,6 +31,10 @@
     <dimen name="card_image_height">160dp</dimen>
     <dimen name="card_title_height">32dp</dimen>
 
+    <dimen name="button_height">190dp</dimen>
+    <dimen name="button_image_height">160dp</dimen>
+    <dimen name="button_title_height">80dp</dimen>
+
     <dimen name="avatar_view">60dp</dimen>
     <dimen name="avatar_size">40dp</dimen>
     <dimen name="avatar_height">72dp</dimen>

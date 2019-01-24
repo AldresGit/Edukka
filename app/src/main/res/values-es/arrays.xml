@@ -16,9 +16,25 @@
         <item>Historial</item>
         <item>Estadísticas</item>
     </string-array>
+    <string-array name="multiplayer_student">
+        <item>Crear Sala</item>
+        <item>Buscar Sala</item>
+    </string-array>
+    <string-array name="multiplayer_teacher">
+        <item>Adornar Sala</item>
+        <item>Balancear Puntos</item>
+    </string-array>
     <string-array name="activity_desc">
         <item>Lista de juegos completados de todas las asignaturas por el usuario o la clase.</item>
         <item>Métricas obtenidas de juegos completados por el usuario o la clase.</item>
+    </string-array>
+    <string-array name="multiplayer_student_desc">
+        <item>Crea un juego y espera a un amigo</item>
+        <item>Busca los juegos que tus amigos han creado</item>
+    </string-array>
+    <string-array name="multiplayer_teacher_desc">
+        <item>Haz que un juego de puntos extra al ganador</item>
+        <item>Aumenta o disminuye los puntos de los alumnos</item>
     </string-array>
     <string-array name="level">
         <item>Difícil</item>
@@ -58,6 +74,14 @@
     <array name="activity_pictures">
         <item>@drawable/activity_history</item>
         <item>@drawable/activity_statistics</item>
+    </array>
+    <array name="multiplayer_pictures_student">
+        <item>@drawable/create_room</item>
+        <item>@drawable/search_room</item>
+    </array>
+    <array name="multiplayer_pictures_teacher">
+        <item>@drawable/add_value_room</item>
+        <item>@drawable/balance_points</item>
     </array>
     <array name="question_type">
         <item>Drag Drop</item>

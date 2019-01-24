@@ -148,6 +148,8 @@ public interface RestInterface {
     @POST("quiz/delete")
     Call<Void> deleteQuiz(@Field("id") int quizId);
 
+// Upload Service
+
     @Multipart
     @POST("/edukka/images/index.php")
     Call<UploadObject> postImage(@Part MultipartBody.Part image, @Part("name") RequestBody name);

@@ -5,6 +5,10 @@ import java.util.Map;
 
 public class HelperClient {
 
+    public static String getBaseURL() {
+        return "http://192.168.1.36/edukka/";
+    }
+
     public static String levelCode(String level) {
         String res;
         switch (level) {
@@ -119,5 +123,4 @@ public class HelperClient {
     public static String defaultClassInfoEs() {
         return "Clase por defecto para los usuarios que no tienen seleccionada una clase privada";
     }
-
 }

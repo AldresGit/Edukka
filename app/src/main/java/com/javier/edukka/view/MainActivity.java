@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.javier.edukka.R;
 import com.javier.edukka.controller.UserSingleton;
+import com.javier.edukka.fragment.ButtonContentFragment;
 import com.javier.edukka.fragment.CardContentFragment;
 import com.javier.edukka.fragment.ListContentFragment;
 import com.javier.edukka.fragment.TileContentFragment;
@@ -34,7 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private final int[] tabIcons = {
         R.drawable.ic_games_white_36dp,
         R.drawable.ic_group_white_36dp,
-        R.drawable.ic_schedule_white_36dp
+        R.drawable.ic_schedule_white_36dp,
+        //-------------------
+        R.drawable.baseline_leak_add_white_36
+        //-------------------
     };
 
     @Override
@@ -63,14 +67,23 @@ public class MainActivity extends AppCompatActivity {
         tabs.getTabAt(0).setIcon(tabIcons[0]);
         tabs.getTabAt(1).setIcon(tabIcons[1]);
         tabs.getTabAt(2).setIcon(tabIcons[2]);
+        //-------------------------
+        tabs.getTabAt(3).setIcon(tabIcons[3]);
+        //-------------------------
 
         tabs.getTabAt(0).setCustomView(R.layout.customlab);
         tabs.getTabAt(1).setCustomView(R.layout.customlab);
         tabs.getTabAt(2).setCustomView(R.layout.customlab);
+        //-------------------------
+        tabs.getTabAt(3).setCustomView(R.layout.customlab);
+        //-------------------------
 
         tabs.getTabAt(0).getIcon().setColorFilter(Color.WHITE,PorterDuff.Mode.SRC_IN);
         tabs.getTabAt(1).getIcon().setColorFilter(Color.LTGRAY,PorterDuff.Mode.SRC_IN);
         tabs.getTabAt(2).getIcon().setColorFilter(Color.LTGRAY,PorterDuff.Mode.SRC_IN);
+        //-------------------------
+        tabs.getTabAt(3).getIcon().setColorFilter(Color.LTGRAY,PorterDuff.Mode.SRC_IN);
+        //-------------------------
 
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -93,8 +106,9 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new TileContentFragment(), "Subjects");
         adapter.addFragment(new ListContentFragment(), "Class");
         adapter.addFragment(new CardContentFragment(), "Activity");
+        adapter.addFragment(new ButtonContentFragment(), "Multiplayer");
         viewPager.setAdapter(adapter);
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(4);
     }
 
     private static class Adapter extends FragmentPagerAdapter {

@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.javier.edukka.R;
 import com.javier.edukka.model.QuizModel;
+import com.javier.edukka.service.HelperClient;
 import com.javier.edukka.service.RestInterface;
 import com.javier.edukka.service.RetrofitClient;
 import com.javier.edukka.service.UploadObject;
@@ -46,7 +47,7 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 
 public class DragImageEditorActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks{
     private String EXTRA_POSITION = "position";
-    private String IMAGES_URL = "http://192.168.1.42/edukka/images/";
+    private String IMAGES_URL = "images/";
     final int SEARCH_IMAGE = 10;
     final int UPLOAD_IMAGE = 12;
     private int id;
@@ -132,6 +133,8 @@ public class DragImageEditorActivity extends AppCompatActivity implements EasyPe
         image4 = (ImageButton) findViewById(R.id.image4);
         image5 = (ImageButton) findViewById(R.id.image5);
         image6 = (ImageButton) findViewById(R.id.image6);
+
+        IMAGES_URL = HelperClient.getBaseURL() + IMAGES_URL;
 
         loadJSON();
     }
