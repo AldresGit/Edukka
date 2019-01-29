@@ -2,6 +2,7 @@ package com.javier.edukka.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -15,9 +16,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.javier.edukka.R;
 import com.javier.edukka.controller.UserSingleton;
+import com.javier.edukka.model.MultiplayerGameModel;
+import com.javier.edukka.model.UserModel;
+import com.javier.edukka.service.RestInterface;
+import com.javier.edukka.service.RetrofitClient;
+import com.javier.edukka.view.CreateRoomActivity;
+import com.javier.edukka.view.SearchRoomActivity;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ButtonContentFragment extends Fragment {
@@ -92,10 +106,43 @@ public class ButtonContentFragment extends Fragment {
             description = (TextView) itemView.findViewById(R.id.button_text);
 
             itemView.setOnClickListener(new View.OnClickListener() {
-
                 @Override
                 public void onClick(View v) {
-                    //Rellenar
+                    final Context context = v.getContext();
+                    int id = Integer.parseInt(UserSingleton.getInstance().getUserModel().getId());
+                    String role = UserSingleton.getInstance().getUserModel().getRole();
+                    if(getAdapterPosition() == 0) {
+                        if(role.equals("student")){
+                            UserModel user = UserSingleton.getInstance().getUserModel();
+                            String data = user.getUsername() + ";" + user.getImage();
+                            RestInterface restInterface = RetrofitClient.getInstance();
+                            Call<MultiplayerGameModel> request = restInterface.createRoom(Integer.parseInt(user.getId()), "Key", 0, "",
+                                    "","waiting", Integer.parseInt(user.getClassId()), 0, data);
+                            request.enqueue(new Callback<MultiplayerGameModel>() {
+                                @Override
+                                public void onResponse(Call<MultiplayerGameModel> call, Response<MultiplayerGameModel> response) {
+                                    Toast.makeText(context, "Creado con exito", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(context, CreateRoomActivity.class);
+                                    i.putExtra("position", response.body().getId());
+                                    context.startActivity(i);
+                                }
+
+                                @Override
+                                public void onFailure(Call<MultiplayerGameModel> call, Throwable t) {
+                                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+
+                        }
+                    } else if(getAdapterPosition() == 1) {
+                        if(role.equals("student")) {
+                            Intent i = new Intent(context, SearchRoomActivity.class);
+                            context.startActivity(i);
+                        } else {
+
+                        }
+                    }
                 }
             });
         }

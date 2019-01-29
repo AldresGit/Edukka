@@ -5,6 +5,7 @@ import com.javier.edukka.model.ClassModel;
 import com.javier.edukka.model.GameModel;
 import com.javier.edukka.model.QuizModel;
 import com.javier.edukka.model.UserModel;
+import com.javier.edukka.model.MultiplayerGameModel;
 
 import java.util.List;
 
@@ -147,6 +148,28 @@ public interface RestInterface {
     @FormUrlEncoded
     @POST("quiz/delete")
     Call<Void> deleteQuiz(@Field("id") int quizId);
+
+// Multiplayer Game Service
+
+    @GET("room/{id}")
+    Call<MultiplayerGameModel> getRoom(@Path("id") int roomId);
+
+    @GET("rooms/{id}")
+    Call<List<MultiplayerGameModel>> searchRoom(@Path("id") int classId);
+
+    @FormUrlEncoded
+    @POST("room/new")
+    Call<MultiplayerGameModel> createRoom(@Field("user1") int user1, @Field("id_user1") String id_user1, @Field("user2") int user2, @Field("id_user2") String id_user2, @Field("quizzes") String quizzes,
+                                          @Field("status") String status, @Field("class_id") int class_id, @Field("extra") int extra, @Field("data") String data);
+
+    @FormUrlEncoded
+    @POST("room/join")
+    Call<UserModel> joinRoom(@Field("user2") int user2, @Field("id_user1") String id_user2, @Field("status") String status, @Field("id") int id);
+
+    @FormUrlEncoded
+    @POST("room/delete")
+    Call<Void> deleteRoom(@Field("id") int roomId);
+
 
 // Upload Service
 

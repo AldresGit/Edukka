@@ -159,6 +159,8 @@
     <string name="sound_edit">Sonido</string>
     <string name="sound_recording">Grabando...</string>
 
+    <string name="game_room">Sala de Juego de </string>
+
     <string name="dragdrop_help1">Esto se mostrará en la parte superior de la pantalla, dando instrucciones al alumno sobre qué hacer.</string>
     <string name="dragdrop_help2">Estos serán los elementos que el alumno tendrá que ordenar. Escriba cada palabra o número separado por un espacio y luego pulse el botón justo debajo para confirmar los valores. Esto inhabilitara de momento la escritura en este campo.</string>
     <string name="dragdrop_help3">En esta sección debe arrastrar los elementos de la segunda caja hacia la primera. Mantenga un elemento seleccionado por un breve instante para agarrarlo. No es necesario coger todos los elementos de la segunda caja, se pueden dejar algunos o todos fuera de la respuesta correcta.

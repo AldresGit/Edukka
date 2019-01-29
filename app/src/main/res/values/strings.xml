@@ -159,6 +159,8 @@
     <string name="sound_edit">Sound</string>
     <string name="sound_recording">Recording...</string>
 
+    <string name="game_room">Game Room of </string>
+
     <string name="dragdrop_help1">This will be shown at the top of the screen and will provide instructions to the student about what to do.</string>
     <string name="dragdrop_help2">These will be the elements that the student will have to order. Write each word or number separated by an only space and then press the button just below to confirm the values. This will disable for now the writing in this field.</string>
     <string name="dragdrop_help3">In this section you have to drag the elements of the second box in the correct order to the first box. Hold an element for a little bit to drag it. There\'s no need to take all the elements from the second box, you can leave someones out of the correct answer.
