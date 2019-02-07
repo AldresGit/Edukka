@@ -3,6 +3,7 @@ package com.javier.edukka.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.javier.edukka.R;
+import com.javier.edukka.app.Config;
 import com.javier.edukka.controller.UserSingleton;
 import com.javier.edukka.model.MultiplayerGameModel;
 import com.javier.edukka.model.UserModel;
@@ -115,15 +117,20 @@ public class ButtonContentFragment extends Fragment {
                         if(role.equals("student")){
                             UserModel user = UserSingleton.getInstance().getUserModel();
                             String data = user.getUsername() + ";" + user.getImage();
+
+                            SharedPreferences pref = context.getSharedPreferences(Config.SHARED_PREF, 0);
+                            String regId = pref.getString("regId", null);
+
                             RestInterface restInterface = RetrofitClient.getInstance();
-                            Call<MultiplayerGameModel> request = restInterface.createRoom(Integer.parseInt(user.getId()), "Key", 0, "",
+                            Call<MultiplayerGameModel> request = restInterface.createRoom(Integer.parseInt(user.getId()), regId, 0, "",
                                     "","waiting", Integer.parseInt(user.getClassId()), 0, data);
                             request.enqueue(new Callback<MultiplayerGameModel>() {
                                 @Override
                                 public void onResponse(Call<MultiplayerGameModel> call, Response<MultiplayerGameModel> response) {
                                     Toast.makeText(context, "Creado con exito", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(context, CreateRoomActivity.class);
-                                    i.putExtra("position", response.body().getId());
+                                    i.putExtra("position", Integer.parseInt(response.body().getId()));
+                                    i.putExtra("role", "host");
                                     context.startActivity(i);
                                 }
 

@@ -164,11 +164,19 @@ public interface RestInterface {
 
     @FormUrlEncoded
     @POST("room/join")
-    Call<UserModel> joinRoom(@Field("user2") int user2, @Field("id_user1") String id_user2, @Field("status") String status, @Field("id") int id);
+    Call<MultiplayerGameModel> joinRoom(@Field("user2") int user2, @Field("id_user2") String id_user2, @Field("status") String status, @Field("id") int id);
+
+    @FormUrlEncoded
+    @POST("room/leave")
+    Call<Void> leaveRoom(@Field("id") int id);
 
     @FormUrlEncoded
     @POST("room/delete")
     Call<Void> deleteRoom(@Field("id") int roomId);
+
+    @FormUrlEncoded
+    @POST("/edukka/firebase/send.php")
+    Call<Void> sendMessage(@Field("firebase_id") String firebaseId, @Field("message") String message);
 
 
 // Upload Service

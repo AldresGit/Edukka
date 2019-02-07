@@ -181,7 +181,7 @@
     <string name="checkbox_help2">Aquí debes escribir todas las posibles opciones que habrá en el checkbox, separadas con un único espacio entre cada opción. El carácter \',\' y \';\' no son validos aquí. Cuando hayas acabado, pulsa el botón justo abajo, el botón de Validación, para continuar la edición de esta pregunta. Esto desactivará este area hasta que pulses el botón Reset.</string>
     <string name="checkbox_help3">Una vez pulses el botón de Validación, el checkbox con todas las opciones escritas anteriormente aparecerá y debes seleccionar las que son correctas, justo como un alumno haría. Despuées pulsa el botón Guardar o el botón a su lado, el botón Reset, para habilitar de nuevo el área de opciones y escribir de nuevo las opciones disponibles.</string>
 
-    <string name="sound_help2">El boton Play verde reproducirá el sonido guardado aquí si existe, si no hay sonido estará deshabilitado, Y el botón Rec o grabar te permitirá grabar con tu micrófono un nuevo archivo de sonido para añadirlo a la aplicación. Cuando empieces a grabar, se deshabilitarán el resto de campos y donde estaba el botón Reec aparecera el botón Stop para detener la grabación.</string>
+    <string name="sound_help2">El boton Play verde reproducirá el sonido guardado aquí si existe, si no hay sonido estará deshabilitado, y el botón Rec o grabar te permitirá grabar con tu micrófono un nuevo archivo de sonido para añadirlo a la aplicación. Cuando empieces a grabar, se deshabilitarán el resto de campos y donde estaba el botón Reec aparecera el botón Stop para detener la grabación.</string>
     <string name="sound_help3">In the Answer and Options area you have to write the four options that the student will have in screen, an the one in the answer area have to be the correct.</string>
 
     <string name="image_help2">Aquí deberás subir la imagen que forma parte de la respuesta correcta y una pequeña descripción sobre la misma. La descripción no ayudará al alumno cuando juegue, pero se mostrará en las correcciones.</string>
@@ -195,6 +195,10 @@
     <string name="must_create_class">Debes crear una clase primero, donde los alumnos podrán jugar al juego.</string>
     <string name="must_create_game">Debes crear el juego primero para acceder a este área.</string>
     <string name="edit_base_game_error">No puedes editar los juegos base.</string>
-
+    <string name="waiting_player">Esperando jugador...</string>
+    <string name="leave_room">Salir de la sala</string>
+    <string name="leave_room_dialog">Esta acción borrará la sala, ¿estás seguro?</string>
+    <string name="leave_room_dialog2">Vas a abandonar la partida, ¿estás seguro?</string>
+    <string name="player1_leave">El jugador 1 se ha desconectado</string>
 
 </resources>

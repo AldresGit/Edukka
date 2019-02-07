@@ -195,6 +195,11 @@
     <string name="must_create_class">You must create a class first, where the students will play the game.</string>
     <string name="must_create_game">Must create the game first to access this area.</string>
     <string name="edit_base_game_error">You can´t edit the base games.</string>
+    <string name="waiting_player">Waiting player...</string>
 
+    <string name="leave_room">Leave the room</string>
+    <string name="leave_room_dialog">This action will erase the room, are you sure?</string>
+    <string name="leave_room_dialog2">You will left the game, are you sure?</string>
+    <string name="player1_leave">Player 1 has disconnected</string>
 
 </resources>

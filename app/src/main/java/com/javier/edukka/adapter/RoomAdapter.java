@@ -2,6 +2,7 @@ package com.javier.edukka.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.javier.edukka.R;
+import com.javier.edukka.app.Config;
 import com.javier.edukka.controller.UserSingleton;
 import com.javier.edukka.model.MultiplayerGameModel;
 import com.javier.edukka.model.UserModel;
@@ -77,22 +79,48 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
                 public void onClick(View v) {
                     final int roomId = Integer.parseInt(list.get(getAdapterPosition()).getId());
                     int user2 = Integer.parseInt(UserSingleton.getInstance().getUserModel().getId());
-                    String user2Id = ""; //Credenciales del dispositivo en FIREBASE
+
+                    SharedPreferences pref = context.getSharedPreferences(Config.SHARED_PREF, 0);
+                    String myregId = pref.getString("regId", null);
+                    String regId = list.get(getAdapterPosition()).getIdUser1();
 
                     RestInterface restInterface = RetrofitClient.getInstance();
-                    Call<UserModel> request = restInterface.joinRoom(user2, user2Id, "connected", roomId);
+
+                    //----------------Enviar mensaje----------------------
+
+                    String message = "hello" + ";" + UserSingleton.getInstance().getUserModel().getName() +
+                            ";" + UserSingleton.getInstance().getUserModel().getImage() + ";" + myregId;
+
+                    Call<Void> requestMessage = restInterface.sendMessage(regId, message);
+                    requestMessage.enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            Toast.makeText(context, R.string.signup_success, Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+
+                        }
+                    });
+
+                    //---------------Enviar mensaje-----------------------
+
+                    /*
+                    Call<UserModel> request = restInterface.joinRoom(user2, myregId, "connected", roomId);
 
                     request.enqueue(new Callback<UserModel>() {
                         @Override
                         public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                             UserModel model = response.body();
                             if (model.getId()==null) {
-                                Toast.makeText(context, R.string.invalid, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, R.string.time_limit_error, Toast.LENGTH_SHORT).show();
                             } else {
                                 Intent i = new Intent(context, CreateRoomActivity.class);
-                                i.putExtra(SearchRoomActivity.ID_ROOM, roomId);
+                                i.putExtra(SearchRoomActivity.ID_ROOM, String.valueOf(roomId));
                                 i.putExtra(SearchRoomActivity.NAME_PLAYER1, model.getName());
                                 i.putExtra(SearchRoomActivity.IMAGE_PLAYER1, model.getImage());
+                                i.putExtra(SearchRoomActivity.ROLE, "guest");
                                 context.startActivity(i);
                             }
                         }
@@ -102,6 +130,10 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
                             Log.d("Error",t.getMessage());
                         }
                     });
+
+                    */
+
+
                 }
             });
         }

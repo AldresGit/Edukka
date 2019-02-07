@@ -36,9 +36,7 @@ public class MainActivity extends AppCompatActivity {
         R.drawable.ic_games_white_36dp,
         R.drawable.ic_group_white_36dp,
         R.drawable.ic_schedule_white_36dp,
-        //-------------------
         R.drawable.baseline_leak_add_white_36
-        //-------------------
     };
 
     @Override
@@ -113,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static class Adapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
-        //private final List<String> mFragmentTitleList = new ArrayList<>();
 
         private Adapter(FragmentManager manager) {
             super(manager);
@@ -131,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
         private void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
-            //mFragmentTitleList.add(title);
         }
 
         @Override
