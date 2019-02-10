@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/play_bottom"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/card_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"/>
+
+            <AdapterViewFlipper
+                android:id="@+id/adapter_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/progress_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?colorPrimary"
+        android:elevation="@dimen/md_keylines">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/md_keylines_x4"
+                android:progressTint="?android:colorAccent"
+                android:progressBackgroundTint="@android:color/white"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                tools:progress="50"/>
+
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:columnCount="4">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/avatar1"
+                    android:layout_width="@dimen/avatar_size"
+                    android:layout_height="@dimen/avatar_size"
+                    android:layout_marginBottom="@dimen/md_keylines_x2"
+                    android:layout_marginEnd="@dimen/md_keylines_x4"
+                    android:src="@drawable/avatar_dog" />
+
+                <TextView
+                    android:id="@+id/progress_text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/md_keylines"
+                    android:textSize="@dimen/play_option"
+                    android:textColor="@android:color/white"
+                    android:text="0"/>
+
+
+                <TextView
+                    android:id="@+id/progress_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="@dimen/md_keylines"
+                    android:layout_marginBottom="@dimen/md_keylines"
+                    android:layout_marginEnd="@dimen/md_keylines_x2"
+                    android:text="0"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/play_option" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/avatar2"
+                    android:layout_width="@dimen/avatar_size"
+                    android:layout_height="@dimen/avatar_size"
+                    android:layout_marginBottom="@dimen/md_keylines_x2"
+                    android:layout_marginStart="@dimen/md_keylines_x2"
+                    android:layout_marginEnd="@dimen/md_keylines_x2"
+                    android:src="@drawable/neutral_user" />
+
+            </GridLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:src="@drawable/ic_navigate_next_white_24dp"
+        android:layout_marginTop="@dimen/play_fab"
+        android:layout_marginEnd="@dimen/fab_margin"/>
+
+</android.support.design.widget.CoordinatorLayout>

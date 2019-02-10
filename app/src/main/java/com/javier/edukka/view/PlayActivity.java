@@ -35,18 +35,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.javier.edukka.R;
-import com.javier.edukka.adapter.CheckboxAdapter;
-import com.javier.edukka.adapter.CompleteAdapter;
-import com.javier.edukka.adapter.DragDropAdapter;
-import com.javier.edukka.adapter.DragImageAdapter;
-import com.javier.edukka.adapter.DragNameAdapter;
+
 import com.javier.edukka.adapter.GeneralAdapter;
-import com.javier.edukka.adapter.ImageAdapter;
-import com.javier.edukka.adapter.PickerAdapter;
 import com.javier.edukka.adapter.ScoreAdapter;
-import com.javier.edukka.adapter.SelectAdapter;
-import com.javier.edukka.adapter.SoundAdapter;
-import com.javier.edukka.adapter.SpinnerAdapter;
 import com.javier.edukka.controller.GameSingleton;
 import com.javier.edukka.controller.UserSingleton;
 import com.javier.edukka.model.ActivityModel;
@@ -121,8 +112,6 @@ public class PlayActivity extends AppCompatActivity {
         avatarView = (ImageView) findViewById(R.id.avatar);
         progressText = (TextView) findViewById(R.id.progress_text);
 
-        //timerCount = (TextView) findViewById(R.id.timer_count);
-
         ringProgressBar = (RingProgressBar) findViewById(R.id.ring_progress_bar);
 
         questions = new ArrayList<>();
@@ -163,7 +152,6 @@ public class PlayActivity extends AppCompatActivity {
                     recyclerView.setAdapter(scoreAdapter);
 
                     finishGame();
-
 
                     Toast.makeText(PlayActivity.this, "TIMEOUT!!", Toast.LENGTH_SHORT).show();
                 }
@@ -221,17 +209,13 @@ public class PlayActivity extends AppCompatActivity {
                     }
                     */
 
-
-                    flipper.setVisibility(View.INVISIBLE); //Linea Mágica
-
+                    flipper.setVisibility(View.INVISIBLE);
 
                     RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
                     ratingBar.setRating((correct*5.0f) / questions.size());
                     ratingBar.setVisibility(View.VISIBLE);
                     fab.setVisibility(View.INVISIBLE);
                     back.setVisibility(View.INVISIBLE);
-
-
 
                     ringProgressBar.setVisibility(View.INVISIBLE);
 
@@ -301,14 +285,8 @@ public class PlayActivity extends AppCompatActivity {
                 int resourceId = getResources().getIdentifier(UserSingleton.getInstance().getUserModel().getImage(), "drawable", getPackageName());
                 avatarView.setImageDrawable(getResources().getDrawable(resourceId));
 
-
-
-
                 ringProgressBar.setMax(Integer.parseInt(GameSingleton.getInstance().getGameModel().getTime()));
                 progressMax = Integer.parseInt(GameSingleton.getInstance().getGameModel().getTime());
-
-
-
 
                 flipper = (AdapterViewFlipper) findViewById(R.id.adapter_view);
 

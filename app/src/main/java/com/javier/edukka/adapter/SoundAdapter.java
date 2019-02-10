@@ -61,7 +61,8 @@ public class SoundAdapter extends BaseAdapter {
             recyclerView.setAdapter(adapter);
             recyclerView.setHasFixedSize(true);
 
-            String url = "http://docs.google.com/uc?export=download&id="+questions.get(i).split(",")[1];
+            //String url = "http://docs.google.com/uc?export=download&id="+questions.get(i).split(",")[1];
+            String url = questions.get(i).split(",")[1];
             final MediaPlayer mediaPlayer = new MediaPlayer();
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             try {

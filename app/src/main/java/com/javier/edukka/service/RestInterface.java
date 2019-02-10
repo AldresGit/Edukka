@@ -157,6 +157,9 @@ public interface RestInterface {
     @GET("rooms/{id}")
     Call<List<MultiplayerGameModel>> searchRoom(@Path("id") int classId);
 
+    @GET("room/randomquizzes/{id}")
+    Call<List<QuizModel>> getRandomQuizzes(@Path("id") int classId);
+
     @FormUrlEncoded
     @POST("room/new")
     Call<MultiplayerGameModel> createRoom(@Field("user1") int user1, @Field("id_user1") String id_user1, @Field("user2") int user2, @Field("id_user2") String id_user2, @Field("quizzes") String quizzes,
@@ -173,6 +176,17 @@ public interface RestInterface {
     @FormUrlEncoded
     @POST("room/delete")
     Call<Void> deleteRoom(@Field("id") int roomId);
+
+    @FormUrlEncoded
+    @POST("room/updatequizzes")
+    Call<Void> updateQuizzes(@Field("quizzes") String quizzes, @Field("id") int id);
+
+    @FormUrlEncoded
+    @POST("room/getquizzesbyid")
+    Call<List<QuizModel>> getQuizzesById(@Field("id1") int id1, @Field("id2") int id2, @Field("id3") int id3, @Field("id4") int id4, @Field("id5") int id5);
+
+
+// Firebase Messaging
 
     @FormUrlEncoded
     @POST("/edukka/firebase/send.php")

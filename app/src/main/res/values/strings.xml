@@ -201,5 +201,6 @@
     <string name="leave_room_dialog">This action will erase the room, are you sure?</string>
     <string name="leave_room_dialog2">You will left the game, are you sure?</string>
     <string name="player1_leave">Player 1 has disconnected</string>
+    <string name="wrong_answer">Wrong answer</string>
 
 </resources>

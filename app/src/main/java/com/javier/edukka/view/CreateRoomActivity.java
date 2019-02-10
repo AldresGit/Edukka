@@ -25,12 +25,15 @@ import com.javier.edukka.R;
 import com.javier.edukka.app.Config;
 import com.javier.edukka.controller.UserSingleton;
 import com.javier.edukka.model.MultiplayerGameModel;
+import com.javier.edukka.model.QuizModel;
 import com.javier.edukka.service.MyFirebaseMessagingService;
 import com.javier.edukka.service.RestInterface;
 import com.javier.edukka.service.RetrofitClient;
 import com.javier.edukka.utils.NotificationUtils;
 
 import org.w3c.dom.Text;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,13 +42,18 @@ import retrofit2.Response;
 public class CreateRoomActivity extends AppCompatActivity {
     private String EXTRA_POSITION = "position";
     private String EXTRA_ROLE = "role";
+
+    public static final String QUIZZES = "quizzes";
+    public static final String RIVAL_ID = "rival_id";
+
     private TextView player1Name, player2Name;
     private ImageView player1Image, player2Image;
     private String role;
     private boolean roomFull = false;
     private String firebaseId = "";
     private String rivalFirebaseId = "";
-    private MultiplayerGameModel model;
+    private List<QuizModel> quizzes;
+    private String quizString;
     private BroadcastReceiver mBroadcastReceiver;
 
     @Override
@@ -67,6 +75,8 @@ public class CreateRoomActivity extends AppCompatActivity {
             player1Name.setText(UserSingleton.getInstance().getUserModel().getName());
             int resourceId = getResources().getIdentifier(UserSingleton.getInstance().getUserModel().getImage(), "drawable", getPackageName());
             player1Image.setImageDrawable(getResources().getDrawable(resourceId));
+
+            loadJSON();
 
         } else if(role.equals("guest")) {
             roomFull = true;
@@ -124,7 +134,7 @@ public class CreateRoomActivity extends AppCompatActivity {
                                     request.enqueue(new Callback<Void>() {
                                         @Override
                                         public void onResponse(Call<Void> call, Response<Void> response) {
-
+                                            findViewById(R.id.animation_view).setVisibility(View.VISIBLE);
                                         }
 
                                         @Override
@@ -141,15 +151,20 @@ public class CreateRoomActivity extends AppCompatActivity {
                                 player2Image.setImageResource(R.drawable.neutral_user);
                                 roomFull = false;
                                 rivalFirebaseId = "";
+                                findViewById(R.id.animation_view).setVisibility(View.INVISIBLE);
                                 break;
                         }
                     } else if(role.equals("guest")) {
                         switch (message.split(";")[0]) {
                             case "start" :
                                 //--------------Aqui se inicia el juego--------------------
-
-
-
+                                int roomId = getIntent().getIntExtra(EXTRA_POSITION, 0);
+                                Intent i = new Intent(CreateRoomActivity.this, MultiPlayActivity.class);
+                                i.putExtra(EXTRA_POSITION, roomId);
+                                i.putExtra(RIVAL_ID, message.split(";")[1]);
+                                i.putExtra(QUIZZES, message.split(";")[2]);
+                                finish();
+                                startActivity(i);
                                 //--------------Aqui se inicia el juego--------------------
                                 break;
                             case "disconnect" :
@@ -161,6 +176,47 @@ public class CreateRoomActivity extends AppCompatActivity {
             }
         };
 
+    }
+
+    private void loadJSON() {
+        RestInterface restInterface = RetrofitClient.getInstance();
+        Call<List<QuizModel>> quizRequest = restInterface.getRandomQuizzes(Integer.parseInt(UserSingleton.getInstance().getUserModel().getClassId()));
+        quizRequest.enqueue(new Callback<List<QuizModel>>() {
+            @Override
+            public void onResponse(Call<List<QuizModel>> call, Response<List<QuizModel>> response) {
+                quizzes = response.body();
+                updateQuizzes();
+            }
+
+            @Override
+            public void onFailure(Call<List<QuizModel>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void updateQuizzes() {
+        quizString = "";
+        for(int i = 0; i < quizzes.size() - 1; i++) {
+            quizString = quizString + quizzes.get(i).getId() + ",";
+        }
+        quizString = quizString + quizzes.get(quizzes.size()-1).getId();
+
+        int id = getIntent().getIntExtra(EXTRA_POSITION, 0);
+
+        RestInterface restInterface = RetrofitClient.getInstance();
+        Call<Void> updateQuizRequest = restInterface.updateQuizzes(quizString, id);
+        updateQuizRequest.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
@@ -197,6 +253,28 @@ public class CreateRoomActivity extends AppCompatActivity {
         }
         builder.setView(dialogView);
         builder.show();
+    }
+
+    public void play(View v) {
+        RestInterface restInterface = RetrofitClient.getInstance();
+        Call<Void> messageRequest = restInterface.sendMessage(rivalFirebaseId, "start;" + firebaseId + ";" + quizString);
+        messageRequest.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                int roomId = getIntent().getIntExtra(EXTRA_POSITION, 0);
+                Intent i = new Intent(CreateRoomActivity.this, MultiPlayActivity.class);
+                i.putExtra(EXTRA_POSITION, roomId);
+                i.putExtra(RIVAL_ID, rivalFirebaseId);
+                i.putExtra(QUIZZES, quizString);
+                finish();
+                startActivity(i);
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
     }
 
     private void disconnect() {
