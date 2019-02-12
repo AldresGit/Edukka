@@ -174,6 +174,10 @@ public interface RestInterface {
     Call<Void> leaveRoom(@Field("id") int id);
 
     @FormUrlEncoded
+    @POST("room/adorn")
+    Call<Void> adornRoom(@Field("id") int id);
+
+    @FormUrlEncoded
     @POST("room/delete")
     Call<Void> deleteRoom(@Field("id") int roomId);
 

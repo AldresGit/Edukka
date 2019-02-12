@@ -87,9 +87,12 @@ public class ProfileActivity extends AppCompatActivity {
                     ImageButton button2 = (ImageButton) findViewById(R.id.user_statistics);
                     button1.setVisibility(View.VISIBLE);
                     button2.setVisibility(View.VISIBLE);
-                } else if (jsonResponse.getRole().equals("student")) {
+                    score_title.setVisibility(View.VISIBLE);
+                    score.setVisibility(View.VISIBLE);
+                } /*
+                    else if (jsonResponse.getRole().equals("student")) {
                     score.setText(getString(R.string.user_score, jsonResponse.getScore()));
-                } else {
+                }*/ else {
                     score_title.setVisibility(View.INVISIBLE);
                     score.setVisibility(View.INVISIBLE);
                 }

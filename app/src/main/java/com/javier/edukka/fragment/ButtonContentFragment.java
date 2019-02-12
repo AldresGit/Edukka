@@ -28,6 +28,7 @@ import com.javier.edukka.service.RestInterface;
 import com.javier.edukka.service.RetrofitClient;
 import com.javier.edukka.view.CreateRoomActivity;
 import com.javier.edukka.view.SearchRoomActivity;
+import com.javier.edukka.view.UpdatePointsActivity;
 
 import java.io.IOException;
 
@@ -116,7 +117,7 @@ public class ButtonContentFragment extends Fragment {
                     if(getAdapterPosition() == 0) {
                         if(role.equals("student")){
                             UserModel user = UserSingleton.getInstance().getUserModel();
-                            String data = user.getUsername() + ";" + user.getImage();
+                            String data = user.getName() + ";" + user.getImage();
 
                             SharedPreferences pref = context.getSharedPreferences(Config.SHARED_PREF, 0);
                             String regId = pref.getString("regId", null);
@@ -140,14 +141,18 @@ public class ButtonContentFragment extends Fragment {
                                 }
                             });
                         } else {
-
+                            //--------------TO DO--------------------- PRIMER BOTON PROFESOR
+                            Intent i = new Intent(context, SearchRoomActivity.class);
+                            context.startActivity(i);
                         }
                     } else if(getAdapterPosition() == 1) {
                         if(role.equals("student")) {
                             Intent i = new Intent(context, SearchRoomActivity.class);
                             context.startActivity(i);
                         } else {
-
+                            //--------------TO DO--------------------- SEGUNDO BOTON PROFESOR
+                            Intent i = new Intent(context, UpdatePointsActivity.class);
+                            context.startActivity(i);
                         }
                     }
                 }

@@ -202,5 +202,16 @@
     <string name="leave_room_dialog2">You will left the game, are you sure?</string>
     <string name="player1_leave">Player 1 has disconnected</string>
     <string name="wrong_answer">Wrong answer</string>
+    <string name="quiz_duel">Quiz Duel</string>
+    <string name="draw">Draw</string>
+    <string name="defeat">Defeat</string>
+    <string name="victory">Victory</string>
+    <string name="room_full">The Room is full</string>
+    <string name="trying_connection">Trying to connect...</string>
+    <string name="room_adorned">Room Adorned</string>
+    <string name="modify_points">Modify Points</string>
+    <string name="amount">Amount:</string>
+    <string name="modify_points_desc">This action will add or extract points from the user, set the amount of points for the operation.</string>
+    <string name="extract">Extract</string>
 
 </resources>

@@ -218,6 +218,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.MainActivity" />
         </activity>
+        <activity
+            android:name=".view.MultiPlayActivity"
+            android:parentActivityName=".view.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.MainActivity" />
+        </activity>
 
         <!-- Firebase Notifications -->
         <service android:name=".service.MyFirebaseMessagingService">
@@ -232,7 +239,7 @@
         </service>
         <!-- ./Firebase Notifications -->
 
-        <activity android:name=".view.MultiPlayActivity"></activity>
+        <activity android:name=".view.UpdatePointsActivity"></activity>
     </application>
 
 </manifest>

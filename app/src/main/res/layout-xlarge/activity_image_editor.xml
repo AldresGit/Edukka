@@ -300,7 +300,7 @@
                         android:background="@color/colorPrimary"
                         android:backgroundTint="@color/colorPrimaryDark"
                         android:backgroundTintMode="src_in"
-
+                        android:onClick="saveImage"
                         android:text="@string/save"
                         android:textColor="@android:color/background_light" />
 

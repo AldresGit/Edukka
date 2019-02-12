@@ -85,14 +85,15 @@ public class SearchRoomActivity extends AppCompatActivity {
 
                             final int roomId = Integer.parseInt(message.split(";")[1]);
                             final String rivalId = message.split(";")[2];
+                            final String extra = message.split(";")[3];
                             RestInterface restInterface = RetrofitClient.getInstance();
                             Call<MultiplayerGameModel> request = restInterface.joinRoom(Integer.parseInt(myUser), myregId, "connected", roomId);
                             request.enqueue(new Callback<MultiplayerGameModel>() {
                                 @Override
                                 public void onResponse(Call<MultiplayerGameModel> call, Response<MultiplayerGameModel> response) {
                                     MultiplayerGameModel model = response.body();
-                                    if (model.getId()==null) { //AQUI SE RECIBE NULL
-                                        Toast.makeText(getApplicationContext(), R.string.time_limit_error, Toast.LENGTH_SHORT).show();
+                                    if (model.getId()==null) {
+
                                     } else {
                                         Intent i = new Intent(getApplicationContext(), CreateRoomActivity.class);
                                         i.putExtra(SearchRoomActivity.ID_ROOM, roomId);
@@ -100,6 +101,7 @@ public class SearchRoomActivity extends AppCompatActivity {
                                         i.putExtra(SearchRoomActivity.IMAGE_PLAYER1, model.getData().split(";")[1]);
                                         i.putExtra(SearchRoomActivity.RIVAL_ID, rivalId);
                                         i.putExtra(SearchRoomActivity.ROLE, "guest");
+                                        i.putExtra("extra", extra);
                                         startActivity(i);
                                     }
                                 }
@@ -111,7 +113,8 @@ public class SearchRoomActivity extends AppCompatActivity {
                             });
                             break;
                         case "full" :
-                            Toast.makeText(getApplicationContext(), R.string.time_limit_error, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.room_full, Toast.LENGTH_SHORT).show();
+                            loadJSON();
                             break;
                     }
                 }

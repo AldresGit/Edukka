@@ -290,58 +290,10 @@ public class PlayActivity extends AppCompatActivity {
 
                 flipper = (AdapterViewFlipper) findViewById(R.id.adapter_view);
 
-                //-------------Lineas nuevas---------------------
-
                 baseAdapter = new GeneralAdapter(getApplication(), questions, options, answers, types);
                 flipper.setAdapter(baseAdapter);
 
-                //-------------Lineas nuevas---------------------
 
-                /*
-                switch (GameSingleton.getInstance().getGameModel().getSubject()) {
-                    case "Spanish Language":
-                        baseAdapter = new DragDropAdapter(getApplication(), questions, options);
-                        flipper.setAdapter(baseAdapter);
-                        break;
-                    case "Mathematics":
-                        baseAdapter = new PickerAdapter(getApplication(), questions, answers);
-                        flipper.setAdapter(baseAdapter);
-                        break;
-                    case "Natural Sciences":
-                        baseAdapter = new DragNameAdapter(getApplication(), questions, options);
-                        flipper.setAdapter(baseAdapter);
-                        break;
-                    case "Social Sciences":
-                        baseAdapter = new DragImageAdapter(getApplication(), questions, options);
-                        flipper.setAdapter(baseAdapter);
-                        break;
-                    case "Biology & Geology":
-                        baseAdapter = new CheckboxAdapter(getApplication(), questions, options);
-                        flipper.setAdapter(baseAdapter);
-                        break;
-                    case "Geography & History":
-                        baseAdapter = new CompleteAdapter(getApplication(), questions, answers);
-                        flipper.setAdapter(baseAdapter);
-                        break;
-                    case "Music":
-                        baseAdapter = new SoundAdapter(getApplication(), questions, options);
-                        flipper.setAdapter(baseAdapter);
-                        break;
-                    case "Sports":
-                        baseAdapter = new ImageAdapter(getApplication(), questions, options);
-                        flipper.setAdapter(baseAdapter);
-                        break;
-                    case "English":
-                        baseAdapter = new SpinnerAdapter(getApplication(), questions, options);
-                        flipper.setAdapter(baseAdapter);
-                        break;
-                    case "General Knowledge":
-                        baseAdapter = new SelectAdapter(getApplication(), questions, options);
-                        flipper.setAdapter(baseAdapter);
-                        break;
-                }
-
-                */
             }
 
             @Override
@@ -371,7 +323,7 @@ public class PlayActivity extends AppCompatActivity {
         });
 
         if (note >= 2.5f) {
-            int score = Integer.parseInt(UserSingleton.getInstance().getUserModel().getScore());
+            int score = 0;
             switch (GameSingleton.getInstance().getGameModel().getDifficulty()) {
                 case "easy":
                     score += 10;

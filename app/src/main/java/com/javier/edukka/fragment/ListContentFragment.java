@@ -96,7 +96,7 @@ public class ListContentFragment extends Fragment {
             holder.avatar.setImageResource(resourceId);
             holder.name.setText(mArrayList.get(i).getUsername());
             holder.description.setText(mArrayList.get(i).getName());
-            if (mArrayList.get(i).getRole().equals("student")) {
+            if (mArrayList.get(i).getRole().equals("student") && UserSingleton.getInstance().getUserModel().getRole().equals("teacher")) {
                 holder.score.setText(mArrayList.get(i).getScore());
             }
 

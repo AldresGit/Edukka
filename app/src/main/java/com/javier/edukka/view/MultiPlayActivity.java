@@ -29,10 +29,12 @@ import android.widget.Toast;
 
 import com.javier.edukka.R;
 import com.javier.edukka.adapter.GeneralAdapter;
+import com.javier.edukka.adapter.MultiScoreAdapter;
 import com.javier.edukka.app.Config;
 import com.javier.edukka.controller.UserSingleton;
 import com.javier.edukka.model.MultiplayerGameModel;
 import com.javier.edukka.model.QuizModel;
+import com.javier.edukka.model.UserModel;
 import com.javier.edukka.service.RestInterface;
 import com.javier.edukka.service.RetrofitClient;
 import com.javier.edukka.utils.NotificationUtils;
@@ -48,8 +50,10 @@ public class MultiPlayActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "position";
     public static final String QUIZZES = "quizzes";
     public static final String RIVAL_ID = "rival_id";
+    public static final String EXTRA_POINTS = "extra";
     private AdapterViewFlipper flipper;
     private RecyclerView recyclerView;
+    private Toolbar toolbar;
     private ProgressBar progressBar;
     private TextView progressText1, progressText2;
     private ImageView avatar1, avatar2;
@@ -58,16 +62,19 @@ public class MultiPlayActivity extends AppCompatActivity {
     private List<String> types;
     private List<String> options;
     private List<String> answers;
-    private List<String> values;
-    private List<String> results;
+    private List<String> players;
+    private List<String> images;
+
     private int step = 0;
     private int score1 = 0;
     private int score2 = 0;
+    int correctAnswer = 10;
+    int wrongAnswer = -5;
+
     private String rivalId = "";
     private boolean end = false;
     private BaseAdapter baseAdapter;
     private BroadcastReceiver mBroadcastReceiver;
-    private MultiplayerGameModel multiplayerGameModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +83,10 @@ public class MultiPlayActivity extends AppCompatActivity {
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Duelo de preguntas");
+        getSupportActionBar().setTitle(R.string.quiz_duel);
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         NestedScrollView scrollView = (NestedScrollView) findViewById(R.id.scrollView);
         recyclerView = (RecyclerView) findViewById(R.id.card_recycler_view);
@@ -97,8 +106,8 @@ public class MultiPlayActivity extends AppCompatActivity {
         options = new ArrayList<>();
         answers = new ArrayList<>();
         types = new ArrayList<>();
-        results = new ArrayList<>();
-        values = new ArrayList<>();
+        players = new ArrayList<>();
+        images = new ArrayList<>();
 
         loadJSON();
 
@@ -108,8 +117,11 @@ public class MultiPlayActivity extends AppCompatActivity {
                 if(intent.getAction().equals(Config.PUSH_NOTIFICATION)) {
                     String message = intent.getStringExtra("message");
                     switch (message.split(";")[0]) {
-                        case "image" :
-                            int resourceId = getResources().getIdentifier(message.split(";")[1], "drawable", getPackageName());
+                        case "data" :
+                            String image = message.split(";")[1];
+                            images.add(image);
+                            players.add(message.split(";")[2]);
+                            int resourceId = getResources().getIdentifier(image, "drawable", getPackageName());
                             avatar2.setImageDrawable(getResources().getDrawable(resourceId));
                             break;
                         case "scoredown" :
@@ -117,6 +129,8 @@ public class MultiPlayActivity extends AppCompatActivity {
                             updateScores(score1, score2);
                             break;
                         case "next" :
+                            score2 = Integer.parseInt(message.split(";")[1]);
+                            updateScores(score1, score2);
                             nextQuestion();
                             break;
                     }
@@ -130,7 +144,7 @@ public class MultiPlayActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!answers.get(step).equals(baseAdapter.getItem(step).toString())) {
                     //Pregunta fallada
-                    score1 -= 5;
+                    score1 += wrongAnswer;
                     updateScores(score1, score2);
                     RestInterface restInterface = RetrofitClient.getInstance();
                     Call<Void> messageRequest = restInterface.sendMessage(rivalId, "scoredown;" + String.valueOf(score1));
@@ -147,10 +161,10 @@ public class MultiPlayActivity extends AppCompatActivity {
                     });
                 } else {
                     //Pregunta acertada
-                    score1 += 10;
+                    score1 += correctAnswer;
                     updateScores(score1, score2);
                     RestInterface restInterface = RetrofitClient.getInstance();
-                    Call<Void> messageRequest = restInterface.sendMessage(rivalId, "next;" + String.valueOf(step+1));
+                    Call<Void> messageRequest = restInterface.sendMessage(rivalId, "next;" + String.valueOf(score1));
                     messageRequest.enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
@@ -184,43 +198,24 @@ public class MultiPlayActivity extends AppCompatActivity {
     }
 
     private void loadJSON() {
-        //int id = getIntent().getIntExtra(EXTRA_POSITION, 0);
-        //RestInterface restInterface = RetrofitClient.getInstance();
-
         progressBar.setProgress(0);
         int resourceId = getResources().getIdentifier(UserSingleton.getInstance().getUserModel().getImage(), "drawable", getPackageName());
         avatar1.setImageDrawable(getResources().getDrawable(resourceId));
 
         rivalId = getIntent().getStringExtra(RIVAL_ID);
+        players.add(UserSingleton.getInstance().getUserModel().getName());
+        images.add(UserSingleton.getInstance().getUserModel().getImage());
 
         loadGame();
-
-        /*Call<MultiplayerGameModel> request = restInterface.getRoom(id);
-        request.enqueue(new Callback<MultiplayerGameModel>() {
-            @Override
-            public void onResponse(Call<MultiplayerGameModel> call, Response<MultiplayerGameModel> response) {
-                multiplayerGameModel = response.body();
-                progressBar.setProgress(0);
-                int resourceId = getResources().getIdentifier(UserSingleton.getInstance().getUserModel().getImage(), "drawable", getPackageName());
-                avatar1.setImageDrawable(getResources().getDrawable(resourceId));
-                if(UserSingleton.getInstance().getUserModel().getId().equals(multiplayerGameModel.getUser1())) {
-                    rivalId = multiplayerGameModel.getIdUser2();
-                } else {
-                    rivalId = multiplayerGameModel.getIdUser1();
-                }
-                loadGame();
-            }
-
-            @Override
-            public void onFailure(Call<MultiplayerGameModel> call, Throwable t) {
-                Log.d("Error",t.getMessage());
-            }
-        });
-        */
     }
 
     private void loadGame() {
-        //String quizzes = multiplayerGameModel.getQuizzes();
+        boolean extra = getIntent().getBooleanExtra(EXTRA_POINTS, false);
+        if(extra) {
+            correctAnswer = 20;
+            wrongAnswer = -10;
+        }
+
         String quizzes = getIntent().getStringExtra(QUIZZES);
         int id1 = Integer.parseInt(quizzes.split(",")[0]);
         int id2 = Integer.parseInt(quizzes.split(",")[1]);
@@ -229,7 +224,8 @@ public class MultiPlayActivity extends AppCompatActivity {
         int id5 = Integer.parseInt(quizzes.split(",")[4]);
 
         RestInterface restInterface = RetrofitClient.getInstance();
-        Call<Void> messageRequest = restInterface.sendMessage(rivalId, "image;" + UserSingleton.getInstance().getUserModel().getImage());
+        Call<Void> messageRequest = restInterface.sendMessage(rivalId, "data;" + UserSingleton.getInstance().getUserModel().getImage()
+                + ";" + UserSingleton.getInstance().getUserModel().getName());
         Call<List<QuizModel>> quizzesRequest = restInterface.getQuizzesById(id1, id2, id3, id4, id5);
         messageRequest.enqueue(new Callback<Void>() {
             @Override
@@ -304,22 +300,41 @@ public class MultiPlayActivity extends AppCompatActivity {
             flipper.setVisibility(View.INVISIBLE);
             fab.setVisibility(View.INVISIBLE);
 
-            /*
 
-            --------------Crear Vista de puntuaciones---------------------
-
-            ScoreAdapter scoreAdapter = new ScoreAdapter(questions, values, results);
-            recyclerView.setAdapter(scoreAdapter);
-
-            --------------Crear Vista de puntuaciones---------------------
-
-            */
+            MultiScoreAdapter multiScoreAdapter = new MultiScoreAdapter(players, images, score1, score2, this.getApplicationContext());
+            recyclerView.setAdapter(multiScoreAdapter);
 
             finishGame();
         }
     }
 
     private void finishGame() {
+        if(score1 == score2) {
+            getSupportActionBar().setTitle(R.string.draw);
+        } else if(score1 < score2) {
+            getSupportActionBar().setTitle(R.string.defeat);
+            toolbar.setBackgroundColor(getResources().getColor(R.color.colorMaths));
+        } else {
+            getSupportActionBar().setTitle(R.string.victory);
+            toolbar.setBackgroundColor(getResources().getColor(R.color.colorMusic));
+        }
+
+        RestInterface restInterface = RetrofitClient.getInstance();
+        Call<UserModel> scoreRequest = restInterface.updateUserScore(score1, Integer.parseInt(UserSingleton.getInstance().getUserModel().getId()));
+        scoreRequest.enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                UserModel jsonResponse = response.body();
+                UserSingleton.getInstance().setUserModel(jsonResponse);
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
+
+            }
+        });
+
+        //----------------Manejar el resto de acciones---------------------
 
     }
 

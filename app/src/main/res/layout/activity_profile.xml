@@ -85,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/colorAccent"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:text="@string/score"
                 android:textSize="@dimen/article_title"
                 android:layout_marginTop="@dimen/md_keylines_x3" />
@@ -94,7 +94,7 @@
                 android:id="@+id/user_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
+                android:visibility="invisible"
                 tools:text="0 points" />
 
             <LinearLayout

@@ -42,14 +42,15 @@ import retrofit2.Response;
 public class CreateRoomActivity extends AppCompatActivity {
     private String EXTRA_POSITION = "position";
     private String EXTRA_ROLE = "role";
-
+    private String EXTRA_POINTS = "extra";
     public static final String QUIZZES = "quizzes";
     public static final String RIVAL_ID = "rival_id";
 
     private TextView player1Name, player2Name;
-    private ImageView player1Image, player2Image;
+    private ImageView player1Image, player2Image, extraIcon;
     private String role;
     private boolean roomFull = false;
+    private boolean extraPoints = false;
     private String firebaseId = "";
     private String rivalFirebaseId = "";
     private List<QuizModel> quizzes;
@@ -70,6 +71,7 @@ public class CreateRoomActivity extends AppCompatActivity {
         player2Name = (TextView) findViewById(R.id.player2_name);
         player1Image = (ImageView) findViewById(R.id.player1_image);
         player2Image = (ImageView) findViewById(R.id.player2_image);
+        extraIcon = (ImageView) findViewById(R.id.extra_icon);
 
         if(role.equals("host")) {
             player1Name.setText(UserSingleton.getInstance().getUserModel().getName());
@@ -84,6 +86,7 @@ public class CreateRoomActivity extends AppCompatActivity {
             String name1 = getIntent().getStringExtra("name1");
             String image1 = getIntent().getStringExtra("image1");
             rivalFirebaseId = getIntent().getStringExtra("firebase_id");
+            String extra = getIntent().getStringExtra("extra");
 
             player1Name.setText(name1);
             int resourceId1 = getResources().getIdentifier(image1, "drawable", getPackageName());
@@ -92,6 +95,11 @@ public class CreateRoomActivity extends AppCompatActivity {
             player2Name.setText(UserSingleton.getInstance().getUserModel().getName());
             int resourceId2 = getResources().getIdentifier(UserSingleton.getInstance().getUserModel().getImage(), "drawable", getPackageName());
             player2Image.setImageDrawable(getResources().getDrawable(resourceId2));
+
+            if(extra.equals("yes")) {
+                extraPoints = true;
+                extraIcon.setVisibility(View.VISIBLE);
+            }
         }
 
         mBroadcastReceiver = new BroadcastReceiver() {
@@ -129,8 +137,13 @@ public class CreateRoomActivity extends AppCompatActivity {
                                     int resourceId2 = getResources().getIdentifier(message.split(";")[2], "drawable", getPackageName());
                                     player2Image.setImageDrawable(getResources().getDrawable(resourceId2));
 
+                                    String extra = "no";
+                                    if(extraPoints) {
+                                        extra = "yes";
+                                    }
+
                                     RestInterface restInterface = RetrofitClient.getInstance();
-                                    Call<Void> request = restInterface.sendMessage(rivalFirebaseId, "come" + ";" +  String.valueOf(roomId) + ";" + firebaseId);
+                                    Call<Void> request = restInterface.sendMessage(rivalFirebaseId, "come" + ";" +  String.valueOf(roomId) + ";" + firebaseId + ";" + extra);
                                     request.enqueue(new Callback<Void>() {
                                         @Override
                                         public void onResponse(Call<Void> call, Response<Void> response) {
@@ -144,6 +157,13 @@ public class CreateRoomActivity extends AppCompatActivity {
                                     });
                                 }
 
+                                break;
+
+                            case "adorn" :
+                                if(!extraPoints) {
+                                    extraPoints = true;
+                                    extraIcon.setVisibility(View.VISIBLE);
+                                }
                                 break;
 
                             case "disconnect" :
@@ -163,6 +183,7 @@ public class CreateRoomActivity extends AppCompatActivity {
                                 i.putExtra(EXTRA_POSITION, roomId);
                                 i.putExtra(RIVAL_ID, message.split(";")[1]);
                                 i.putExtra(QUIZZES, message.split(";")[2]);
+                                i.putExtra(EXTRA_POINTS, extraPoints);
                                 finish();
                                 startActivity(i);
                                 //--------------Aqui se inicia el juego--------------------
@@ -256,6 +277,7 @@ public class CreateRoomActivity extends AppCompatActivity {
     }
 
     public void play(View v) {
+
         RestInterface restInterface = RetrofitClient.getInstance();
         Call<Void> messageRequest = restInterface.sendMessage(rivalFirebaseId, "start;" + firebaseId + ";" + quizString);
         messageRequest.enqueue(new Callback<Void>() {
@@ -266,6 +288,7 @@ public class CreateRoomActivity extends AppCompatActivity {
                 i.putExtra(EXTRA_POSITION, roomId);
                 i.putExtra(RIVAL_ID, rivalFirebaseId);
                 i.putExtra(QUIZZES, quizString);
+                i.putExtra(EXTRA_POINTS, extraPoints);
                 finish();
                 startActivity(i);
             }

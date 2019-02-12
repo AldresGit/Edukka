@@ -201,5 +201,16 @@
     <string name="leave_room_dialog2">Vas a abandonar la partida, ¿estás seguro?</string>
     <string name="player1_leave">El jugador 1 se ha desconectado</string>
     <string name="wrong_answer">Respuesta incorrecta</string>
+    <string name="quiz_duel">Duelo de Preguntas</string>
+    <string name="draw">Empate</string>
+    <string name="defeat">Derrota</string>
+    <string name="victory">Victoria</string>
+    <string name="room_full">La Sala está llena</string>
+    <string name="trying_connection">Intentando conectar...</string>
+    <string name="room_adorned">Sala Adornada</string>
+    <string name="modify_points">Modificar Puntos</string>
+    <string name="amount">Cantidad:</string>
+    <string name="modify_points_desc">Esta acción añadirá o extraerá puntos del usuario, establece la cantidad de puntos para la operación.</string>
+    <string name="extract">Extraer</string>
 
 </resources>
